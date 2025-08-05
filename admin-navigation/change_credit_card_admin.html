@@ -1,0 +1,52 @@
+<p><style>
+    #main-footer{<br />
+        margin-top: 400px;<br />
+    }<br />
+</style></p>
+<p>[insert_php]<br />if(!session_status() == 2) header("Location: http://musicforlifekids.com/administrative-login/");<br />if(empty($_SESSION)) header("Location: http://musicforlifekids.com/administrative-login/");<br />if(!$_SESSION['is_logged_in'])header("Location: http://musicforlifekids.com/administrative-login/");<br />function tryPost($url, $postVal){<br />try {<br />$ch = curl_init();<br />if (FALSE === $ch)<br />throw new Exception('failed to initialize');<br />curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);<br />curl_setopt($ch, CURLOPT_URL, $url);<br />curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);<br />curl_setopt($ch, CURLOPT_POST, true);<br />curl_setopt($ch, CURLOPT_POSTFIELDS, $postVal);<br />return curl_exec($ch);<br />} catch (Exception $e) {<br />trigger_error(sprintf(<br />$e-&gt;getCode(), $e-&gt;getMessage()),<br />E_USER_ERROR<br />);<br />}<br />}<br />$postVal = http_build_query(array("action" =&gt; "fetch-parent" , "values" =&gt; array("cmd" =&gt; "refund")));<br />$mainUrl = 'https://txtphoneline.com/mfl-wp/class/class.main.php';<br />$res = tryPost($mainUrl ,$postVal);<br />$parent= json_decode($res, true);<br />[/insert_php]</p>
+<div class="container">
+<div class="form-group"><label for="sel1">Nav Menu:</label><br /><select id="navMenu" class="form-control">
+<option>------Select------</option>
+<option value="https://musicforlifekids.com/admin-page-navigation/">Main Navigation</option>
+<option value="https://musicforlifekids.com/program-subscription/">Program Subscription</option>
+<option value="https://musicforlifekids.com/registered-student/">School Program Classes</option>
+<option value="https://musicforlifekids.com/teachers-module/">Teacher/s Module</option>
+<option value="https://musicforlifekids.com/registered-student-list/">Registered Student List</option>
+<option value="https://musicforlifekids.com/change-credit-card-admin/">Change Parent Credit Card</option>
+<option value="https://musicforlifekids.com/chesterbrook-student-list/">Chesterbrook Student List</option>
+<option value="https://musicforlifekids.com/inactive-chesterbrook-plans/">Chesterbrook Inactive Studelt List</option>
+<option value="https://musicforlifekids.com/retired-students/">Retired Student List</option>
+<option value="https://musicforlifekids.com/unsubscribe-student/">Un-Subscribe Student</option>
+<option value="https://musicforlifekids.com/re-subscribe-student/">Re-Subscribe Student</option>
+<option value="https://musicforlifekids.com/refund/">Billing Info / Refund Charges</option>
+<option value="https://musicforlifekids.com/failed-payments/">Failed Payments</option>
+<option value="https://musicforlifekids.com/import-recital/">Import Recital</option>
+<option value="https://musicforlifekids.com/school-import/">Import Schools</option>
+</select></div>
+<p><script><br />
+    $("#navMenu").on("change", function(){<br />
+		if($(this).val())<br />
+			location.href= $(this).val();<br />
+    })<br />
+    </script></p>
+</div>
+<div class="container">
+<div class="col-xs-12">
+<div class="col-xs-3"><label class="make-smaller">Student Name: </label><br /><input id="studentName" class="form-control" type="text" placeholder="Student Name" /></div>
+<div class="col-xs-3"><label class="make-smaller">Phone Number: </label><br /><input id="phoneNumber" class="form-control" type="text" placeholder="any part of the phone number" />
+<div style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;" data-lastpass-icon-root=""> </div>
+</div>
+<div class="col-xs-3"><label class="make-smaller">Parent Email: </label><br /><input id="pEmail" class="form-control" type="text" placeholder="Email Address" /></div>
+<div class="col-xs-3"><label class="make-smaller">School: </label><br /><br /></div>
+<div class="col-xs-3"><button id="search" class="btn btn-primary" style="margin-top: 25px;" type="button">Search</button></div>
+</div>
+<div class="col-xs-12" style="margin-top: 20px;">
+<div class="col-xs-12"><label class="make-smaller" for="parent">Parent: </label><br /><select class="form-control ">
+<option value="0">--SELECT PARENT--</option>
+[insert_php]</select><br /><select class="form-control ">for($i = 0; $i&lt;count($parent); $i++){ echo '
+<option value="'.$parent[$i]['id'].'">Parent: '.$parent[$i]['fname'].' '.$parent[$i]['lname'].' ------------ Child: '.$parent[$i]['parent_form']['cFName'].' '.$parent[$i]['parent_form']['cLName'].' ------------- Phone: '.$parent[$i]['parent_form']['cpNumber'].'</option>
+';</select><br /><select class="form-control ">}</select><br /><select class="form-control ">[/insert_php]</select></div>
+<div class="col-xs-3"><button id="send" class="btn btn-primary" style="margin-top: 25px;" type="button">Send Link</button></div>
+</div>
+</div>
+<p><script src="https://txtphoneline.com/mfl-wp/scripts/notify.min.js"></script></p>

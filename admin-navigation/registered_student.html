@@ -1,0 +1,168 @@
+<p>[insert_php]<br />if(!session_status() == 2) header("Location: https://musicforlifekids.com/administrative-login/");<br />if(empty($_SESSION)) header("Location: https://musicforlifekids.com/administrative-login/");<br />if(!$_SESSION['is_logged_in'])header("Location: https://musicforlifekids.com/administrative-login/");</p>
+<p>function tryPost($url, $postVal){<br />try {<br />$ch = curl_init();<br />if (FALSE === $ch)<br />throw new Exception('failed to initialize');<br />curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);<br />curl_setopt($ch, CURLOPT_URL, $url);<br />curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);<br />curl_setopt($ch, CURLOPT_POST, true);<br />curl_setopt($ch, CURLOPT_POSTFIELDS, $postVal);</p>
+<p>$t = curl_exec($ch);<br />return $t;<br />} catch (Exception $e) {<br />trigger_error(sprintf(<br />$e-&gt;getCode(), $e-&gt;getMessage()),<br />E_USER_ERROR);<br />}<br />}</p>
+<p>$postVal = http_build_query(array("action" =&gt; "fetch-schools" , "values" =&gt; array()));</p>
+<p>$b = tryPost('http://txtphoneline.com/mfl-wp/class/class.main.php',$postVal);<br />$schools = json_decode(json_decode(json_encode($b), true), true);<br />[/insert_php]</p>
+<div class="container">
+<div class="form-group"><label for="sel1">Nav Menu:</label><br /><select id="navMenu" class="form-control">
+<option>------Select------</option>
+<option value="https://musicforlifekids.com/admin-page-navigation/">Main Navigation</option>
+<option value="https://musicforlifekids.com/program-subscription/">Program Subscription</option>
+<option value="https://musicforlifekids.com/registered-student/">School Program Classes</option>
+<option value="https://musicforlifekids.com/teachers-module/">Teacher/s Module</option>
+<option value="https://musicforlifekids.com/registered-student-list/">Registered Student List</option>
+<option value="https://musicforlifekids.com/change-credit-card-admin/">Change Parent Credit Card</option>
+<option value="https://musicforlifekids.com/chesterbrook-student-list/">Chesterbrook Student List</option>
+<option value="https://musicforlifekids.com/inactive-chesterbrook-plans/">Chesterbrook Inactive Studelt List</option>
+<option value="https://musicforlifekids.com/retired-students/">Retired Student List</option>
+<option value="https://musicforlifekids.com/unsubscribe-student/">Un-Subscribe Student</option>
+<option value="https://musicforlifekids.com/re-subscribe-student/">Re-Subscribe Student</option>
+<option value="https://musicforlifekids.com/refund/">Billing Info / Refund Charges</option>
+<option value="https://musicforlifekids.com/failed-payments/">Failed Payments</option>
+<option value="https://musicforlifekids.com/import-recital/">Import Recital</option>
+<option value="https://musicforlifekids.com/school-import/">Import Schools</option>
+</select></div>
+<p><script><br />
+    $("#navMenu").on("change", function(){<br />
+		if($(this).val())<br />
+			location.href= $(this).val();<br />
+    })<br />
+    </script></p>
+</div>
+<p><style>
+    .filterable {<br />
+        margin-top: 15px;<br />
+    }<br />
+    .filterable .panel-heading .pull-right {<br />
+        margin-top: -20px;<br />
+    }<br />
+    .filterable .fltrow input[disabled] {<br />
+        background-color: transparent;<br />
+        border: none;<br />
+        cursor: auto;<br />
+        box-shadow: none;<br />
+        padding: 0;<br />
+        height: auto;<br />
+    }<br />
+    .filterable .fltrow input[disabled]::-webkit-input-placeholder {<br />
+        color: #333;<br />
+    }<br />
+    .filterable .fltrow input[disabled]::-moz-placeholder {<br />
+        color: #333;<br />
+    }<br />
+    .filterable .fltrow input[disabled]:-ms-input-placeholder {<br />
+        color: #333;<br />
+    }</p>
+<p>    .flt {<br />
+        display: block;<br />
+        width: 100%;<br />
+        height: 34px;<br />
+        padding: 6px 12px;<br />
+        font-size: 14px;<br />
+        line-height: 1.42857143;<br />
+        color: #555;<br />
+        background-color: #fff;<br />
+        background-image: none;<br />
+        border: 1px solid #ccc;<br />
+        border-radius: 4px;<br />
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);<br />
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);<br />
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;<br />
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;<br />
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;<br />
+    }</p>
+<p>    p:empty {<br />
+        display: none;<br />
+    }<br />
+</style></p>
+<div class="container">
+<div class="row">
+<div class="panel panel-primary filterable">
+<div class="panel-heading">
+<h3 class="panel-title">Select School</h3>
+<div class="pull-right"><button class="btn btn-default btn-xs btn-filter"> Filter</button></div>
+</div>
+[insert_php]$i = 1;foreach($schools as $school) {echo '';echo '';<br />echo '';<br />echo '';<br />echo '';<br />echo '';<br />$i++;<br />}<br />[/insert_php]<br />
+<table id="table1" class="table table-hover" style="margin-top: 10px;">
+<tbody>
+<tr>
+<th>#</th>
+<th>State</th>
+<th>School Name</th>
+<th>School Location</th>
+</tr>
+</tbody>
+<tbody>
+<tr class="selectSchool" style="cursor: pointer;" data-id="' . $school['id'] . '">
+<td>';<br />echo $i;<br />echo '</td>
+<td id="state-' . $school['id'] . '">';<br />echo $school['state'];<br />echo '</td>
+<td id="schoolName-' . $school['id'] . '">';<br />echo $school['schoolName'];<br />echo '</td>
+<td id="schoolLocation-' . $school['id'] . '">';<br />echo $school['schoolLocation'];<br />echo '</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+<div class="modal-dialog modal-lg">
+<p><!-- Modal content--></p>
+<div class="modal-content">
+<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+<h4 class="modal-title"> </h4>
+</div>
+<div class="modal-body">
+<div id="alert-id12"> </div>
+<div id="myModalBody"><button class="btn btn-default btn-xs btn-filter"> Filter</button>
+<table id="table2" class="table table-hover" style="margin-top: 10px;">
+<tbody>
+<tr class="modalTableTr">
+<th>Student Name</th>
+<th>Student Age</th>
+<th>Parent Contact Number</th>
+<th>Parent Email Address</th>
+</tr>
+</tbody>
+<tbody id="modalTable"></tbody>
+</table>
+</div>
+</div>
+<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Close</button></div>
+</div>
+</div>
+</div>
+<div id="myModal2" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<p><!-- Modal content--></p>
+<div class="modal-content">
+<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+<h4 class="modal-title">Modal Header</h4>
+</div>
+<div class="modal-body">
+<div id="alert-id"> </div>
+<div id="makeupClassData">
+<table class="table table-striped table-hover">
+<thead>
+<tr>
+<th>Date</th>
+<th>Teacher</th>
+<th>Start Time of Class</th>
+<th>End Time of Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input class="form-control makeupDate " type="date" /></td>
+<td> </td>
+<td><input class="form-control stc" name="usr_time" type="time" /></td>
+<td><input class="form-control etc" name="usr_time" type="time" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Close</button><br /><button class="btn btn-default doMakeup" type="button">Submit</button></div>
+</div>
+</div>
+</div>
+<p><script src="https://txtphoneline.com/mfl-wp/scripts/tablefilter_all_min.js"></script></p>

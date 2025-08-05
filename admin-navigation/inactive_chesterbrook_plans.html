@@ -1,0 +1,156 @@
+<p><style>
+    @media (min-width: 1200px)<br />
+    grid.less:7<br />
+        .container {<br />
+            width: 1300px;<br />
+        }<br />
+</style></p>
+<p>[insert_php]<br />if(!session_status() == 2) header("Location: https://musicforlifekids.com/administrative-login/");<br />if(empty($_SESSION)) header("Location: https://musicforlifekids.com/administrative-login/");<br />if(!$_SESSION['is_logged_in'])header("Location: https://musicforlifekids.com/administrative-login/");</p>
+<p>function tryPost($url, $postVal){<br />try {<br />$ch = curl_init();<br />if (FALSE === $ch)<br />throw new Exception('failed to initialize');<br />curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);<br />curl_setopt($ch, CURLOPT_URL, $url);<br />curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);<br />curl_setopt($ch, CURLOPT_POST, true);<br />curl_setopt($ch, CURLOPT_POSTFIELDS, $postVal);</p>
+<p>$t = curl_exec($ch);<br />return $t;<br />} catch (Exception $e) {<br />trigger_error(sprintf(<br />$e-&gt;getCode(), $e-&gt;getMessage()),<br />E_USER_ERROR);<br />}<br />}</p>
+<p>$postValB = http_build_query(array("action" =&gt; "fetch-child" , "values" =&gt; array("cmd" =&gt; "retired-chesterbrook")));</p>
+<p>$b = tryPost('http://txtphoneline.com/mfl-wp/class/class.main.php',$postValB);<br />$cbStudents = json_decode(json_decode(json_encode($b), true), true);<br />[/insert_php]</p>
+<div class="container">
+<div class="form-group"><label for="sel1">Nav Menu:</label><br /><select id="navMenu" class="form-control">
+<option>------Select------</option>
+<option value="https://musicforlifekids.com/admin-page-navigation/">Main Navigation</option>
+<option value="https://musicforlifekids.com/program-subscription/">Program Subscription</option>
+<option value="https://musicforlifekids.com/registered-student/">School Program Classes</option>
+<option value="https://musicforlifekids.com/teachers-module/">Teacher/s Module</option>
+<option value="https://musicforlifekids.com/registered-student-list/">Registered Student List</option>
+<option value="https://musicforlifekids.com/change-credit-card-admin/">Change Parent Credit Card</option>
+<option value="https://musicforlifekids.com/chesterbrook-student-list/">Chesterbrook Student List</option>
+<option value="https://musicforlifekids.com/inactive-chesterbrook-plans/">Chesterbrook Inactive Studelt List</option>
+<option value="https://musicforlifekids.com/retired-students/">Retired Student List</option>
+<option value="https://musicforlifekids.com/unsubscribe-student/">Un-Subscribe Student</option>
+<option value="https://musicforlifekids.com/re-subscribe-student/">Re-Subscribe Student</option>
+<option value="https://musicforlifekids.com/refund/">Billing Info / Refund Charges</option>
+<option value="https://musicforlifekids.com/failed-payments/">Failed Payments</option>
+<option value="https://musicforlifekids.com/import-recital/">Import Recital</option>
+<option value="https://musicforlifekids.com/school-import/">Import Schools</option>
+</select></div>
+<p><script><br />
+    $("#navMenu").on("change", function(){<br />
+		if($(this).val())<br />
+			location.href= $(this).val();<br />
+    })<br />
+    </script></p>
+</div>
+<p><style>
+    .filterable {<br />
+        margin-top: 15px;<br />
+    }<br />
+    .filterable .panel-heading .pull-right {<br />
+        margin-top: -20px;<br />
+    }<br />
+    .filterable .fltrow input[disabled] {<br />
+        background-color: transparent;<br />
+        border: none;<br />
+        cursor: auto;<br />
+        box-shadow: none;<br />
+        padding: 0;<br />
+        height: auto;<br />
+    }<br />
+    .filterable .fltrow input[disabled]::-webkit-input-placeholder {<br />
+        color: #333;<br />
+    }<br />
+    .filterable .fltrow input[disabled]::-moz-placeholder {<br />
+        color: #333;<br />
+    }<br />
+    .filterable .fltrow input[disabled]:-ms-input-placeholder {<br />
+        color: #333;<br />
+    }</p>
+<p>    .flt {<br />
+        display: block;<br />
+        width: 100%;<br />
+        height: 34px;<br />
+        padding: 6px 12px;<br />
+        font-size: 14px;<br />
+        line-height: 1.42857143;<br />
+        color: #555;<br />
+        background-color: #fff;<br />
+        background-image: none;<br />
+        border: 1px solid #ccc;<br />
+        border-radius: 4px;<br />
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);<br />
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);<br />
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;<br />
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;<br />
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;<br />
+    }</p>
+<p>    p:empty {<br />
+        display: none;<br />
+    }<br />
+</style></p>
+<div>
+<div class="container">
+<div class="panel panel-info col-xs-5 state0 state0-panel" style="text-align: center; width: 100vh;">
+<div class="panel-body">Click on the Row of the selected Student to check events.</div>
+</div>
+</div>
+<div>
+<div class="panel panel-primary filterable" style="width: 1666px; margin-left: 10px;">
+<div class="panel-heading">
+<h3 class="panel-title">Inactive Chesterbrook Student List</h3>
+<div class="pull-right"><button class="btn btn-default btn-xs btn-filter"> Filter</button></div>
+</div>
+[insert_php]foreach($cbStudents as $student) {echo '';echo'';<br />echo '';<br />}<br />[/insert_php]<br />
+<table id="table2" class="table table-hover" style="margin-top: 10px; table-layout: fixed; word-wrap: break-word;">
+<tbody>
+<tr>
+<th>Student Name</th>
+<th>Student Age</th>
+<th>Parent Name</th>
+<th>Parent Email Address</th>
+<th>Parent Contact Number</th>
+<th>Media Consent</th>
+<th>School Name</th>
+<th>Program</th>
+<th>Plan Frequency</th>
+<th>Date Registered</th>
+<th>Plan Amount</th>
+<th>Restart</th>
+</tr>
+</tbody>
+<tbody>
+<tr class="tableTr showEvent" style="cursor: pointer;" data-id="' . $student['id'] . '">
+<td data-toggle="modal" data-target="#retireModal">'.$student['childName'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['yearAge'].'Year/s and '.$student['monthAge'].'Month/s Old</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['fname'].' '.$student['lname'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['parentEmail'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['parentCpNumber'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['parent_form']['mediaConsent'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['school_name'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['program'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['payment_frequency'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['date_created'].'</td>
+<td data-toggle="modal" data-target="#retireModal">'.$student['amount'].'</td>
+<td><button class="btn btn-info unRetire" data-id="'.$student['id'].'">Restart</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="retireModal" class="modal fade" role="dialog">
+<div class="modal-dialog" style="width: 1200px;"><!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+<h4 class="modal-title">Event Logs</h4>
+</div>
+<div class="modal-body">
+<table id="table2" class="table table-hover" style="margin-top: 10px; table-layout: fixed; word-wrap: break-word;">
+<tbody>
+<tr>
+<th>Event</th>
+<th>Event Date</th>
+</tr>
+</tbody>
+<tbody id="loadEvent"></tbody>
+</table>
+</div>
+<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Close</button></div>
+</div>
+</div>
+</div>
+<p><script src="https://txtphoneline.com/mfl-wp/scripts/notify.min.js"></script></p>
+</div>
