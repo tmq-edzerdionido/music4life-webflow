@@ -1,0 +1,933 @@
+ <script type="text/javascript">
+ function setModalDialogClass() {
+    var modalDialog = document.querySelector('.modal-dialog-responsive');
+    var screenSize = window.innerWidth;
+
+    if (screenSize >= 1440) { // Large screens (Bootstrap's "lg" breakpoint)
+      modalDialog.classList.add('modal-lg');
+    } else {
+      modalDialog.classList.remove('modal-lg');
+    }
+  }
+
+  // Call the function when the window is resized
+  window.addEventListener('resize', setModalDialogClass);
+
+  // Call the function on page load
+  setModalDialogClass();
+</script>
+
+<script type="text/javascript">
+    $(".mytable").hide();
+    $(".main_title").remove();
+    $(document).tooltip({
+        position: {
+            at: "center bottom",
+        }
+    });
+    $('.showLoading').hide();
+    $("#appendModal").hide();
+    $(".program0").hide();
+    $('.panelInfo1').hide();
+    $("br").remove();
+    if (location.protocol === "http:") location.protocol = "https:";
+    var screenSize = $(this).width();
+    /*$(".modal-lg").css("width", "1400px");*/  // [RP] resize modal comment out - jul-31-2023
+    $(document).ready(function () {
+        if (location.protocol === "http:") location.protocol = "https:";
+        $('p').each(function () {
+            var $this = $(this);
+            if ($this.html().replace(/\s|&nbsp;/g, '').length === 0)
+                $this.remove();
+        });
+        $('.showLoading').hide();
+        $("#appendModal").hide();
+        $(".program0").hide();
+        $('.panelInfo1').hide();
+        $(".mytable").hide();
+        $("br").remove();
+        var selectedSchoolId = null;
+        var selectedProgramId = null;
+        var selectedChainId = null;
+        var fetchSchool = function (id, callback) {
+            /*console.info("##fetchSchool");*/
+            $(".schoolSelected").hide('slow');
+            $(".panelInfo1").show('slow');
+            if (id == 0) return;
+            var data = {};
+            $("#tableBody").hide('slow');
+            $(".mytable").hide();
+            data.action = 'fetch-schools';
+            data.values = {};
+            data.values.stateId = id;
+            data.values.sort = true;
+            ajaxPostFN('https://txtphoneline.com/mfl-wp/class/class.main.php', data, function (d) {
+                console.log("schools", d)
+                if (d.length == 0) {
+                    $(".panelInfo1").hide('slow');
+                    bootstrapAlert('school-alert', 'warning', 'No Schools for this state');
+                    setTimeout(function () {
+                        bootstrapAlert('school-alert', 'clear');
+                    }, 3000);
+                    return;
+                }
+                $(".tableTr").remove();
+                if (screenSize == null) return;
+                if (screenSize >= 770) {
+                    var html = '';
+                    for (var i = 0; i < d.length; i++) {
+                        var is_school_payment  = d[i].is_school_payment;
+                        html += '<tr class="tableTr">' +
+                            '<td ><p id="name-' + d[i].id + '">' + d[i].schoolName + '</p></td>' +
+                            '<td ><p id="loc-' + d[i].id + '">' + d[i].schoolLocation + '</p></td>' +
+                            '<td>' +
+                            '<button class="btn btn-default apply" data-chain="' + d[i].chain_id + '" data-id="' + d[i].id + '" data-cmd="' + is_school_payment + '">This is my school!</button>' +
+                            '</td>' +
+                            '</tr>';
+                    }
+                } else {
+                    $('.mobileMode').hide();
+                    var html = '';
+                    for (var i = 0; i < d.length; i++) {
+                        var schoolName = d[i].schoolName;
+                        var is_school_payment  = d[i].is_school_payment;
+                        schoolName = schoolName.split(/((?:\w+ ){4})/g).filter(Boolean).join("<br>");
+                        html += '<tr class="tableTr"  data-toggle="collapse" class="accordion-toggle" style="cursor: pointer" data-target="#accordion-row-' + d[i].id + '">' +
+                            '<td ><p id="name-' + d[i].id + '">' + schoolName + ' <i class="fa fa-arrow-down" aria-hidden="true" style="float: right; padding-right: 10px;"></i></p></td>' +
+                            '</tr>';
+                        var location = d[i].schoolLocation;
+                        location = location.split(/((?:\w+ ){5})/g).filter(Boolean).join("<br>");
+                        html += '<tr>' +
+                            '<td colspan="12" class="hiddenRow">' +
+                            '<div class="accordian-body collapse" id="accordion-row-' + d[i].id + '" aria-expanded="true" >' +
+                            '<div class="row" style="background-color: transparent; margin: 20px 0; padding:0;">\
+                                <div class="col-xs-12 small heading" style="background-color: transparent; padding:0;">\
+                                    <ul id="primary-menu" class="nav-menu" aria-expanded="true" style="padding:0;">\
+                                        <li ><p id="loc-' + d[i].id + '">School Address: <br> ' + location + '</p> </li>\
+                                    <li ><button class="btn btn-default apply" data-chain="' + d[i].chain_id + '" data-id="' + d[i].id + '" data-cmd="' + is_school_payment + '">This is my school!</button></li>\
+                                </ul>\
+                            </div>\
+                        </div>' +
+                            '</div>' +
+                            '</td>' +
+                            '</tr>';
+                    }
+                }
+                $("#tableBody").prepend($(html)).show('slow');
+                $("body").scrollTop(350);
+                reloadApply();
+            });
+        };
+        fetchSchool($("#state").val());
+        $('#state').on('change', function () {
+            $("#schoolTable").show('slow');
+            $('.mytable').hide();
+            reloadApply();
+            var id = $("#state").val();
+            fetchSchool(id);
+        });
+        $("#selectedSchool").click(function () {
+            event.preventDefault();
+            $(".forMobile-school").removeAttr('style');
+            $(".program0").hide('slow');
+            $("#schoolTable").show();
+            $(".schoolSelected").hide('slow');
+            $(".panelInfo1").show('slow');
+            $(".mytable").hide('slow');
+            $(".state0").show('slow');
+            reloadApply();
+        });
+        var schoolPrograms = function (id, callback) {
+            var data = {};
+            data.action = 'fetch-program';
+            data.values = {};
+            data.values.schoolId = id;
+            data.values.cmd = "active";
+            ajaxPostFN('https://txtphoneline.com/mfl-wp/class/class.main.php', data, function (d) {
+                console.log("d: ", d);
+                if (callback) callback.call(this, d);
+            });
+        };
+        var isNumber = function (n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        };
+        var tConvert = function (time) {
+            // Check correct time format and split into components
+            time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+            if (time.length > 1) { // If time format correct
+                time = time.slice(1);  // Remove full string match value
+                time[5] = +time[0] < 12 ? ' am' : ' pm'; // Set am/pm
+                time[0] = +time[0] % 12 || 12; // Adjust hours
+            }
+            return time.join(''); // return adjusted time or original string
+        };
+        var saveSignUpForm = function (price, cmd, form, fName, lName, pEmail) {
+            bootstrapAlert('modal-alert', 'info', 'Registering to '+ selectedSchoolName +'... ', true);
+            $("#modalFormData").hide('slow');
+            var data = {};
+            data.action = 'saveCCinfo';
+            data.pay = true;
+            data.values = {};
+            data.values.ccProcessor = 2;
+            data.values.parentId = 1;
+            data.values.cmd = cmd;
+            data.values.schoolId = selectedSchoolId;
+            data.values.schoolName = selectedSchoolName; //[RP-10-JAN-2024]
+            data.values.programId = selectedProgramId;
+            data.values.chainId = selectedChainId;
+            data.values.isDefault = 1;
+            data.values.amount = price;
+            data.values.form = form;
+            data.values.pFname = fName;
+            data.values.pLname = lName;
+            data.values.pEmail = pEmail;
+            ajaxPostFN('https://txtphoneline.com/mfl-wp/class/class.main.php', data, function (d) {
+                console.log(d);
+                if ('updated' in d && d.updated) {
+                    bootstrapAlert('modal-alert', 'success', 'Registration Received! We will get your little musician added to the roster and will notify '+ selectedSchoolName +' to charge your account...');
+                    setTimeout(function () {
+                        bootstrapAlert('modal-alert', 'clear');
+                        $('.modal-body').append('<h3 style="text-align: center;">Thank you for registering for the Music for Life ' + selectedProgram + ' at <br/> ' + $("#sName").text().substring(0, $("#sName").text().length - 2) + '.  ' + selectedSchoolName + ' will bill you directly.</h3><h3 style="text-align: center;"> An Email has been sent to you regarding your registration.</h3>');
+                        $('.modal-body').append('<h4 style="text-align: center;"><a href="https://musicforlifekids.com" style="color: #337ab7 !important;">Click Here</a> to Return to the Music for Life Kids Website.</h4>');
+                        return;
+                    }, 3000);
+                }
+                if ('inserted' in d && d.inserted) {
+                    bootstrapAlert('modal-alert', 'success', 'Registration Received! We will get your little musician added to the roster and will notify ' + selectedSchoolName + ' to charge your account...');
+                    setTimeout(function () {
+                        bootstrapAlert('modal-alert', 'clear');
+                        $('.modal-body').append('<h3 style="text-align: center;">Thank you for registering for the Music for Life ' + selectedProgram + ' at <br/>' + $("#sName").text().substring(0, $("#sName").text().length - 2) + '.  ' + selectedSchoolName + ' will bill you directly.</h3><h3 style="text-align: center;"> An Email has been sent to you regarding your registration.</h3>');//$('.modal-body').append('<h5 style="text-align: center;">Redirecting to Main Page ... <img src="https://musicforlifekids.com/wp-content/uploads/2016/09/loading.gif" alt="" class="showLoading" style="width: 35px;position: absolute;margin-top: -10px;"> </h5>');
+                        $('.modal-body').append('<h4 style="text-align: center;"><a href="https://musicforlifekids.com" style="color: #337ab7 !important;">Click Here</a> to Return to the Music for Life Kids Website.</h4>');
+                        return;
+                    }, 3000);
+                }
+                if ('success' in d && d.success) {
+                    bootstrapAlert('modal-alert', 'success', 'Payment Completed and is Successful...');
+                    setTimeout(function () {
+                        bootstrapAlert('modal-alert', 'clear');
+                        $('.modal-body').append('<h3 style="text-align: center;">Thank you for Signing up on MFL program!</h3><h3 style="text-align: center;"> An Email has been sent to you regarding your registration.</h3>');
+                        // $('.modal-body').append('<h5 style="text-align: center;">Redirecting to Main Page ... <img src="https://musicforlifekids.com/wp-content/uploads/2016/09/loading.gif" alt="" class="showLoading" style="width: 35px;position: absolute;margin-top: -10px;"> </h5>');
+                        $('.modal-body').append('<h4 style="text-align: center;"><a href="https://musicforlifekids.com" style="color: #337ab7 !important;">Click Here</a> to Return to the Music for Life Kids Website.</h4>');
+                        setTimeout(function () {
+                            location.href = 'https://musicforlifekids.com';
+                        }, 3000);
+                        return;
+                    }, 3000);
+                }
+                if ('inserted' in d && !d.inserted) {
+                    bootstrapAlert('modal-alert', 'danger', d.error);
+                    return;
+                }
+                if ('success' in d && !d.success) {
+                    bootstrapAlert('modal-alert', 'danger', d.error);
+                    return;
+                }
+                if ('updated' in d && !d.updated) {
+                    bootstrapAlert('modal-alert', 'danger', d.error);
+                    return;
+                }
+            });
+        };
+        var createSignUp = function (price, cmd, form, fName, lName, pEmail, plan) {
+            var data = {};
+            data.action = 'getCCProcessors';
+            data.values = {};
+            data.command = 'get';
+            data.values.isAdmin = IS_ADMIN;
+            ajaxPostFN('https://txtphoneline.com/mfl-wp/class/class.main.php', data, function (d) {
+                if (StripeCheckout == null) location.reload();
+                bootstrapAlert('modal-alert', 'clear');
+                handler = StripeCheckout.configure({
+                    key: d.access_token,
+                    locale: 'auto',
+                    token: function (token) {
+                        var alertString = 'Your payment method will be charged on a ' + plan + ' basis in the amount of $' + price + '<br/> for ' + selectedProgram + ' at ' + $("#sName").text().substring(0, $("#sName").text().length - 2) + ' This class can be scheduled……';
+                        var alertString1 = selectedProgram + ' at ' + $("#sName").text().substring(0, $("#sName").text().length - 2) + '<br/>' + selectedProgramSchedule + '';
+                        bootstrapAlert('modal-alert', 'info', 'Payment in process <br/> ' + alertString1, true, false);
+                        $('.ifNoMargin').attr('style', 'margin-left: 0px !important; width: 35px;');
+                        $("#modalFormData").hide('slow');
+                        var data = {};
+                        data.action = 'saveCCinfo';
+                        data.pay = true;
+                        data.values = {};
+                        data.values.ccProcessor = 2;
+                        data.values.token = token.id;
+                        data.values.last4 = token.card.last4;
+                        data.values.parentId = 1;
+                        data.values.cmd = cmd;
+                        data.values.schoolId = selectedSchoolId;
+                        data.values.programId = selectedProgramId;
+                        data.values.isDefault = 1;
+                        data.values.amount = price;
+                        data.values.form = form;
+                        data.values.pFname = fName;
+                        data.values.token = token;
+                        data.values.pLname = lName;
+                        data.values.pEmail = pEmail;
+                        data.values.schoolId = selectedSchoolId;
+                        data.values.isAdmin = IS_ADMIN;
+                        ajaxPostFN('https://txtphoneline.com/mfl-wp/class/class.main.php', data, function (d) {
+                            console.log(d);
+                            if ('updated' in d && d.updated) {
+                                bootstrapAlert('modal-alert', 'success', 'Your payment has been approved.  You will receive an email shortly with your receipt.');
+                                setTimeout(function () {
+
+                                    bootstrapAlert('modal-alert', 'clear');
+                                    $('.modal-body').append('<h3 style="text-align: center;">' + alertString1 + '</h3>');
+                                    $('.modal-body').append('<h4 style="text-align: center;"><a href="https://musicforlifekids.com" style="color: #337ab7 !important;">Click Here</a> to Return to the Music for Life Kids Website.</h4>');
+
+                                    return;
+                                }, 3000);
+                            }
+                            if ('success' in d && d.success) {
+                                bootstrapAlert('modal-alert', 'success', 'Payment Completed and is Successful...');
+                                bootstrapAlert('modal-alert', 'success', 'Your payment has been approved.  You will receive an email shortly with your receipt.');
+                                setTimeout(function () {
+
+                                    bootstrapAlert('modal-alert', 'clear');
+                                    $('.modal-body').append('<h3 style="text-align: center;">' + alertString1 + '</h3>');
+                                    $('.modal-body').append('<h4 style="text-align: center;><a href="https://musicforlifekids.com">Click Here</a>to Return to the Music for Life Kids Website.</h4>');
+
+                                    return;
+                                }, 3000);
+                            }
+
+                            if ('success' in d && !d.success) {
+                                bootstrapAlert('modal-alert', 'danger', d.error);
+                                $('.modal-body').append('<h3 style="text-align: center;">Please Go To this Link to complete your Registration: <a href="'+d.link+'">' + d.link + '</a></h3>');
+                            }
+
+                            if ('inserted' in d && !d.inserted) {
+                                bootstrapAlert('modal-alert', 'danger', d.error);
+                                return;
+                            }
+                            if ('updated' in d && !d.updated) {
+                                bootstrapAlert('modal-alert', 'danger', d.error);
+                                return;
+                            }
+                        });
+                    }
+                });
+                var stripeDesc = '';
+                if (cmd == 'month') stripeDesc = 'Monthly Recurring Payment';
+                if (cmd == 'hyear') stripeDesc = '6 months Recurring Payment';
+                if (cmd == 'year') stripeDesc = 'Yearly Recurring Payment';
+                handler.open({
+                    name: 'musicforlifekids.com',
+                    description: stripeDesc,
+                    zipCode: true,
+                    amount: price * 100,
+                    allowRememberMe: false,
+                    closed: function () {
+                        $('#createPayment').attr("disabled", false);
+                        $('.showLoading').hide('slow');
+                    }
+                });
+            });
+            window.addEventListener('popstate', function () {
+                handler.close();
+            });
+        };
+        var cmd = null;
+        var selectedSchoolName = null;
+        var is_school_payment = null;
+        var price = null;
+        var handler = null;
+        var plan = null;
+        var stopThis = true;
+        $("#createPayment").addClass('disabled');
+        $('#terms_of_service').change(function () {
+            if ($(this).is(":checked")) {
+                $("#createPayment").removeClass('disabled');
+                stopThis = false;
+            } else {
+                $("#createPayment").addClass('disabled');
+                stopThis = true;
+            }
+        });
+        var selectedProgram;
+        var selectedProgramSchedule;
+        $(".signUPM").click(function () {
+            price = $(this).attr("data-price");
+            plan = "Monthly";
+            $('.ifYearly').hide();
+            $('.programCostMonth').show();
+            $('.programCostHalfYear').hide();
+            $('.programCostYear').hide();
+            var obj = $(".programLabel").text(selectedProgram + ' Class Monthly Subscription \n (' + "$" + parseFloat(price).toFixed(2) + '/class billed directly by your school.)')
+            obj.html(obj.html().replace(/\n/g, '<br/>'));
+            if (cmd != 'chargeAtSchool') {
+                $("#selectedLabel").text("$" + parseFloat(price).toFixed(2) + " Monthly");
+                obj.html(null);
+                $(".programLabel").text(selectedProgram + 'Class Monthly Subscription (' + "$" + parseFloat(price).toFixed(2) + ')');
+                cmd = $(this).attr("data-cmd");
+            }
+            if (screenSize >= 770) {
+                $('#myModal').animate({ scrollTop: 600 }, 'slow');
+            } else {
+                var container = $('#myModal');
+                var scrollTo = $('#selectedLabel');
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+            $("#appendModal").show('slow');
+            $('.classCost').text('').hide();
+
+            $(".selectedFrequency").text('monthly');
+            if (screenSize <= 769) {
+                var container = $('#myModal');
+                var scrollTo = $('#selectedLabel');
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+        });
+        $(".signUPHY").click(function () {
+            plan = "Half Year";
+            $('.ifYearly').hide();
+            $('.programCostMonth').hide();
+            $('.programCostHalfYear').show();
+            $('.programCostYear').hide();
+            cmd = $(this).attr("data-cmd");
+            price = $(this).attr("data-price");
+            $("#selectedLabel").text("$" + parseFloat(price).toFixed(2) + " Semi-Yearly");
+            if (screenSize >= 770) {
+                $('#myModal').animate({ scrollTop: 600 }, 'slow');
+            } else {
+                var container = $('#myModal');
+                var scrollTo = $('#selectedLabel');
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+            $("#appendModal").show('slow');
+            $(".programLabel").text(selectedProgram + ' Class Semi-Yearly Subscription (' + "$" + parseFloat(price).toFixed(2) + ')');
+            $(".selectedFrequency").text('semi-yearly');
+            var classCost = $(this).attr("class-cost");
+            $('.classCost').text('').hide();
+            if (screenSize <= 769) {
+                var container = $('#myModal');
+                var scrollTo = $('#selectedLabel');
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+        });
+        $(".signUPY").click(function () {
+            plan = "Yearly";
+            $(".ifYearly").show();
+            $('.programCostYear').show();
+            $('.programCostMonth').hide();
+            $('.programCostHalfYear').hide();
+
+            cmd = $(this).attr("data-cmd");
+            price = $(this).attr("data-price");
+            var classCost = $(this).attr("class-cost");
+            $('.classCost').text('Class Cost: $' + parseFloat(classCost).toFixed(2) + '/class (minus 10% discount) * 46 scheduled classes = ' + parseFloat((classCost * 46) * 0.90).toFixed(2) + '/year').show();
+
+            $("#selectedLabel").text("$" + parseFloat(price).toFixed(2) + " Yearly");
+            if (screenSize >= 770) {
+                $('#myModal').animate({ scrollTop: 600 }, 'slow');
+            } else {
+                var container = $('#myModal');
+                var scrollTo = $('#selectedLabel');
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+            $("#appendModal").show('slow');
+            $(".programLabel").text(selectedProgram + ' Class Yearly Subscription (' + "$" + parseFloat(price).toFixed(2) + ')');
+            $(".selectedFrequency").text('yearly');
+            if (screenSize <= 769) {
+                var container = $('#myModal');
+                var scrollTo = $('#selectedLabel');
+                container.animate({
+                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+        });
+        $("#createPayment").click(function (e) {
+            e.preventDefault();
+            var that = this;
+            if (stopThis) return;
+            var formInc = false;
+            if ($("#cFName").val().length == 0) {
+                formInc = true;
+                $("#cFName").css("background-color", "#f3d49f");
+            }
+            if ($("#cLName").val().length == 0) {
+                formInc = true;
+                $("#cLName").css("background-color", "#f3d49f");
+            }
+            if ($("#bday").val().length == 0) {
+                formInc = true;
+                $("#bday").css("background-color", "#f3d49f");
+				$(".err-mes").append("<p>Please select a birth date!</p>");
+            }
+            if ($("#cpNumber").val().length == 0) {
+                formInc = true;
+                $("#cpNumber").css("background-color", "#f3d49f");
+            }
+            if ($("#pFName").val().length == 0) {
+                formInc = true;
+                $("#pFName").css("background-color", "#f3d49f");
+            }
+
+            if ($("#pLName").val().length == 0) {
+                formInc = true;
+                $("#pLName").css("background-color", "#f3d49f");
+            }
+
+            if ($("#pEmail").val().length == 0) {
+                formInc = true;
+                $("#pEmail").css("background-color", "#f3d49f");
+            }
+            if (!isNumber($('input[name=optradio]:checked').val())) {
+                formInc = true;
+                $('.mediaConsent').css("background-color", "#f3d49f");
+				$(".err-mes").append("<p>No concent selected!</p>");
+            }
+            singleAuth($("#cpNumber").val(), 'phone',function(d) {
+                var a = JSON.parse(d);
+
+                if (a.isValid == false){
+                    formInc = true;
+                    $("#cpNumber").css("background-color", "#f3d49f");
+                    
+                    //[RP] added error handling with blank phone number - 02-MAR-2022
+                    if (a.number == ""){
+                        $("#cpNumber").notify(
+                            "Missing Phone number",
+                            { position: "top-left", className: "warning" }
+                        );
+    			//$(".err-mes").append("<p>Missing Phone number!</p>");
+    			$(".err-mes").html("<p>Missing Phone number!</p>");
+                
+                    }else{
+                        $("#cpNumber").notify(
+                            "Invalid Phone number",
+                            { position: "top-left", className: "warning" }
+                        );
+    			//$(".err-mes").append("<p>Invalid Phone number!</p
+    			$(".err-mes").html("<p>Invalid Phone number!</p>");
+                    }
+                   
+                }
+
+                if (validateEmail($("#pEmail").val()) == false){
+                    formInc = true;
+                    $("#pEmail").css("background-color", "#f3d49f");
+                    $("#pEmail").notify(
+                        "Invalid Email Address",
+                        { position: "top-left", className: "warning" }
+                    );
+					$(".err-mes").append("<p>Invalid Email Address!</p>");
+                }
+                if (formInc) {
+                    // $('#myModal').animate({ scrollTop: 600 }, 'slow');
+                    return;
+                }
+                var form = {};
+                form.mediaConsent = $('input[name=optradio]:checked').val();
+                form.recurringDate = $("#recurringDate").val();
+                form.pName = $("#pFName").val();
+                form.pLname = $("#pLName").val();
+                form.pEmail = $("#pEmail").val();
+                form.cFName = $("#cFName").val();
+                form.cLName = $("#cLName").val();
+                form.bday = $("#bday").val();
+                form.availability = $("#availability").val();
+                form.cpNumber = $("#cpNumber").val();
+                form.address = $("#address").val();
+                form.preferredTeacher = $("#preferredTeacher").val();
+                $(that).notify(
+                    "Loading Payment Form...",
+                    { position: "top-left", className: "info" }
+                );
+                $(that).attr('disabled', true);
+                $('.showLoading').show('slow');
+                if (cmd == 'chargeAtSchool') {
+                    saveSignUpForm(price, cmd, form, $("#pFName").val(), $("#pLName").val(), $("#pEmail").val());
+                    return;
+                }
+                createSignUp(price, cmd, form, $("#pFName").val(), $("#pLName").val(), $("#pEmail").val(), plan);
+            });
+
+
+        });
+        $('.panelInfo1').hide();
+        $('.ifYearly').hide();
+        var selectprogram = function () {
+            $(".selectProgram").click(function () {
+                var id = $(this).attr("data-id");
+                console.log('id: ', id);
+                selectedProgramId = id;
+                var data = {};
+                data.action = 'fetch-schools-program';
+                data.values = {};
+                data.values.programId = id;
+                data.values.cmd = "computed";
+
+
+                ajaxPostFN('https://txtphoneline.com/mfl-wp/class/class.main.php', data, function (list) {
+                    if (list[0].programCode == '!PL') $(".privateLesson").hide();
+                    if (list[0].programCode == 'PL') $(".privateLesson").show();
+                    $(".programDescription").text(list[0].description);
+                    $(".programAgeGroup").text('Ages: ' + list[0].prog_category);
+                    $(".programTitle").text('Music for Life- ' + list[0].program);
+                    selectedProgram = list[0].program;
+                    schoolname_ = selectedSchoolName;
+
+                    selectedProgramSchedule = $(".programName-" + id).text();
+
+                    if (is_school_payment == "1") {
+                        $("#myModalLabel").text($("#myModalLabel").text() + " " + $(".programName-" + id).text());
+                        // $("#myModalLabel").html($(".programName-" + id).text() + ' ');
+                        $(".signUPM").text("Show Form");
+                        cmd = 'chargeAtSchool';
+                    } else{
+                        $("#myModalLabel").html("Your payment method will be charged a recurring fee based on the plan you choose below. <br/> " + $(".programName-" + id).text() + ' ');
+                        $(".signUPM").text("Choose Monthly");
+                    }
+                    //$("#myModalLabel").html("Your payment method will be charged a recurring fee based on the plan you choose below. <br/> " +$(".programName-"+id).text() + ' ');
+                    $(".programName-" + id).clone().appendTo('#modalTBody');
+                    if (screenSize >= 770) {
+                        $(".cat-" + id).clone().appendTo('#modalTBody');
+                        $(".amn-" + id).clone().appendTo('#modalTBody');
+                        $(".dur-" + id).clone().appendTo('#modalTBody');
+                        $(".longDescription-" + id).clone().appendTo('#modalTBody');
+                    } else {
+                        var cat = $(".cat-" + id);
+                        var amn = $(".amn-" + id);
+                        var dur = $(".dur-" + id);
+                        selectedClass = 'accordion-row-' + id;
+                        $("." + selectedClass).clone().appendTo('#modalTBody');
+                    }
+                    $(".mTableTr").remove();
+                    $('#priceCompute').text('');
+                    console.log(list);
+                    console.log({selectedSchoolName, is_school_payment});
+                    for (var i = 0; i < list.length; i++) {
+                        $('.programDuration').text('Duration: ' + list[i].duration);
+                        $('.programTitle').text(list[i].title);
+                        $(".monthlyDiscount").text('N/A');
+                        $(".halfYearDiscount").text('N/A');
+                        $(".yearlyDiscount").text('N/A');
+                        const isChesterbrookSchool = (selectedSchoolName || "").toLowerCase().includes("chesterbrook");  //[RP - 11-JAN-2024]
+                        if (isNumber(list[i].amount_monthly)) {
+                            if (!list[i].fulldisclosure) {
+                                $('.monthlyPrice').text(parseFloat(list[i].amount_monthly).toFixed(2));
+                                $('.monthlyPrice').css("padding", "0px 2px 0px 17px");
+                                $('.monthlyPrice').css("line-height", "70px");
+                                $('.monthlyPrice').css("font-size", "70px");
+                            } else {
+                                let text = ``;
+                                if (screenSize >= 770) {
+                                    text = `$${parseFloat(list[i].amount_monthly).toFixed(2)} <br/> <span style="font-size: 26px; font-style: italic; line-height: 0">${list[i].fulldisclosure}</span>`
+                                } else {
+                                    text = `$${parseFloat(list[i].amount_monthly).toFixed(2)} <br/> <span style="font-size: 26px; font-style: italic; line-height: 0">${list[i].fulldisclosure}</span>`
+                                }
+                                $('.mm-pc').text("");
+                                $('.monthlyPrice').html(text);
+                                $('.monthlyPrice').css("padding", "0px 2px 0px 17px");
+                                $('.monthlyPrice').css("line-height", "70px");
+                                $('.monthlyPrice').css("font-size", "70px");
+                            }
+                            /*$('.monthlyPrice').text(parseFloat(list[i].amount_monthly).toFixed(2)); [KAG] */
+                            $(".signUPM").attr("data-price", list[i].amount_monthly);
+                            $(".signUPM").removeClass('disabled');
+                            $('.programCostMonth').text('Recurring Monthly Cost: $ ' + parseFloat(list[i].amount_monthly).toFixed(2));
+                            $("#selectedLabel").show();
+                            /*$('.monthlyPrice').css("padding", "0px 2px 0px 17px");[KAG]*/
+                            $('.mm-pff').css('padding', '20px 0 18px');
+                            cmd = null;
+                            /*$('.monthlyPrice').css("line-height", "70px");[KAG]*/
+                            /*$('.monthlyPrice').css("font-size", "70px"); [KAG]*/
+                            $('.yearPrice').css("font-size", "70px");
+                            $('.hYearPrice').css("font-size", "70px");
+                            // [RP] added code from [RGE] 09-MAR-2022
+                            const price = parseFloat(list[i].amount_monthly);
+                            const price_weekly = list[i].amount_weekly ? parseFloat(list[i].amount_weekly) : (price*12)/52;
+		                    $('#priceCompute').text(`Classes are held weekly. The weekly price for each music class is $${(price_weekly).toFixed(2)}. The music education circular is paid monthly at $${price.toFixed(2)} per month.`);
+
+                            //[RP - 11-JAN-2024]
+                            /*if(isChesterbrookSchool && is_school_payment == "1"){*/
+                            /*     cmd = 'chargeAtSchool';*/
+                            /*}*/
+                            //[KAG - 02-29-24]
+                            if(is_school_payment == 1){
+                                 cmd = 'chargeAtSchool';
+                            }
+                                                    
+                            $('.mm-pc').show();
+                        }
+                        else {
+                            $('.monthlyPrice').css("font-size", "70px");
+                            $('.monthlyPrice').css("line-height", "70px");
+                            $('.monthlyPrice').text(list[i].amount_monthly);
+
+                            $(".signUPM").addClass('disabled');
+                            $('.programCostMonth').text('Recurring Monthly Cost: ' + list[i].amount_monthly);
+                            $("#selectedLabel").show();
+                            $('.monthlyPrice').css("padding", "0px 2px 0px 17px");
+                            $('.mm-pff').css('padding', '20px 0 18px');
+                            $('.mm-pc').show();
+                            // [RP] added condition for is_school_payment equals "1"
+                            if (list[i].amount_monthly == 'charged at school, just need registration page without payment details and we invoice the school' || is_school_payment) {
+
+                               // [RGE] change the button for weekly/monthly based on "is_school_payment" - 09/20/2019
+                               // [RP] moved here 01-MAR-2022
+                               // [RP] added attribute data-cmd 03-MAR-2022
+                               //if(is_school_payment == "0"){
+                            //    $(".signUPM").text("Choose Weekly");
+                            //        $(".signUPM").attr("data-cmd", "week");
+                            //   }
+                                $(".signUPM").attr("data-price", list[i].amount_weekly);
+                                $(".signUPM").attr("class-cost", list[i].amount_weekly);
+                                $(".signUPHY").addClass('disabled');
+                                $(".signUPY").addClass('disabled');
+                                $('.pricely-figure').css("padding", "10px 0 30px");
+                                $('.pphdng').css("min-height", "260px");
+                                // [RP] added condition "1"
+                                if(is_school_payment == "1"){
+                                 cmd = 'chargeAtSchool';
+                                }
+
+                                // [RP] removed jul-31-2023
+                                //$($('.pricely-label')[1]).text("");
+                                /*$('.monthlyPrice').html('  <br><span style="font-size: 16px;font-weight: bold;"> $ ' + list[i].amount_weekly + ' / Class / Week </span><br>Classes are weekly and '+ schoolname_ +' will bill you for the cost.' +
+                                    '. Fill out the form below, and we will let the school know that you are registered so your little musician can get the benefits of weekly music classes.');*/
+				// [RGE] Modified 02-DEC-2022
+				// [RP] comment out jul-31-2023
+				/*$('.monthlyPrice').html('  <br><span style="font-size: 16px;font-weight: bold;"> $ ' + list[i].amount_weekly + ' / Week for 2 classes </span><br>There are 2 classes per week.  One 30 minute group class and one 10 minute one-on-one coaching class. '+ schoolname_ +' will bill you for the cost. Fill out the form below, and we will let the school know that you are registered so your little musician can get the benefits of weekly music classes.');
+                                $('.programCostMonth').text('Recurring Monthly Cost: '+ schoolname_ +' will bill your account monthly for classes conducted. Fill out the form Above and we will let the school know to register your little musician for classes.');
+                                $('.monthlyPrice').css("font-size", "11px");
+                                $('.monthlyPrice').css("line-height", "19px");
+                                $('.monthlyPrice').css("padding", "0px 0px 0px 15px");
+                                $('.mm-pc').hide();
+                                $('.mm-pff').css('padding', '5px 0px 0px');
+                                $(".signUPM").removeClass('disabled');
+                                $("#selectedLabel").text('$' + list[i].amount_weekly + ' / Week for 2 classes');*/
+                                
+                                // [RP] added out jul-31-2023
+                                $('.monthlyPrice').css("font-size", "70px");
+                                $('.monthlyPrice').css("line-height", "70px");
+                                $('.monthlyPrice').text(list[i].amount_weekly);
+                                $(".signUPM").removeClass('disabled');
+                            } else {
+                            }
+                        }
+                        if (isNumber(list[i].amount_half_year)) {
+                            var obj = $(".halfYearDiscount").text('5% OFF: Normally $' + parseFloat((list[i].amount_half_year * 100) / 95).toFixed(2) + '/semi-yearly \n Save $' + parseFloat(parseFloat((list[i].amount_half_year * 100) / 95) - parseFloat(list[i].amount_half_year)).toFixed(2) + ' when you Register Semi-Yearly!');
+                            obj.html(obj.html().replace(/\n/g, '<br/>'));
+                            $('.hYearPrice').text(parseFloat(list[i].amount_half_year).toFixed(2));
+                            $(".signUPHY").attr("data-price", list[i].amount_half_year);
+                            $(".signUPHY").attr("class-cost", list[i].amount_weekly);
+                            $(".signUPHY").removeClass('disabled');
+                            $('.programCostHalfYear').text('Recurring Semi-Yearly Cost: $' + parseFloat(list[i].amount_half_year).toFixed(2) + '/semi-yearly (You Receive 5% OFF: Normally $' + parseFloat((list[i].amount_half_year * 100) / 95).toFixed(2) + '/semi-yearly - Save $' + parseFloat(parseFloat((list[i].amount_half_year * 100) / 95) - parseFloat(list[i].amount_half_year)).toFixed(2) + ' when you Register Semi-Yearly!)');
+                        }
+                        else {
+                            $(".signUPHY").attr("class-cost", list[i].amount_weekly);
+                            $('.hYearPrice').text(list[i].amount_half_year);
+                            $('.hYearPrice').css("font-size", "");
+                            $(".signUPHY").addClass('disabled');
+                            $('.programCostHalfYear').text('Recurring Semi-Yearly Cost: ' + list[i].amount_half_year);
+                        }
+                        if (isNumber(list[i].amount_yearly)) {
+                            $(".signUPY").attr("class-cost", list[i].amount_weekly);
+                            $('.list-group-item').css("height", "72px");
+                            var obj = $(".yearlyDiscount").text('10% OFF: Normally $' + parseFloat((list[i].amount_yearly * 100) / 90).toFixed(2) + '/year \n Save $' + parseFloat(parseFloat((list[i].amount_yearly * 100) / 90) - parseFloat(list[i].amount_yearly)).toFixed(2) + ' when you Register Yearly!');
+                            obj.html(obj.html().replace(/\n/g, '<br/>'));
+                            $('.yearPrice').text(parseFloat(list[i].amount_yearly).toFixed(2));
+                            $(".signUPY").attr("data-price", list[i].amount_yearly);
+                            $(".signUPY").removeClass('disabled');
+                            $('.programCostYear').text('Recurring Yearly Cost: $' + parseFloat(list[i].amount_yearly).toFixed(2) + '/year (You Receive 10% OFF: Normally $' + parseFloat((list[i].amount_yearly * 100) / 90).toFixed(2) + '/year - Save $' + parseFloat(parseFloat((list[i].amount_yearly * 100) / 90) - parseFloat(list[i].amount_yearly)).toFixed(2) + ' when you Register Yearly!)');
+                        }
+                        else {
+                            $(".signUPY").attr("class-cost", list[i].amount_weekly);
+                            $('.yearPrice').text(list[i].amount_yearly);
+                            $('.yearPrice').css("font-size", "");
+                            $(".signUPY").addClass('disabled');
+                            $('.programCostYear').text('Recurring Yearly Cost: ' + list[i].amount_yearly);
+
+                        }
+                    }
+                });
+            });
+        };
+        selectprogram();
+        var reloadApply = function () {
+            $('.apply').click(function () {
+                $(".program0").show('slow');
+                $("#schoolTable").hide();
+                $(".schoolSelected").show('slow');
+                $(".panelInfo1").hide('slow');
+                $(".mytable").show('slow');
+                $(".state0").hide('slow');
+                selectedSchoolId = $(this).attr("data-id");
+                is_school_payment = $(this).attr("data-cmd");
+                selectedChainId = $(this).attr("data-chain");
+                var schoolName = $('#name-' + selectedSchoolId).text();
+                selectedSchoolName = schoolName;
+                var schoolAdd = $('#loc-' + selectedSchoolId).text();
+                $("#sName").text(schoolName + " - ");
+                $("#sAddress").text(schoolAdd);
+                schoolPrograms(selectedSchoolId, function (list) {
+                    var html = '';
+                    $(".pTableTr").remove();
+                    if (screenSize == null) return;
+                    if (screenSize >= 770) {
+                        for (var i = 0; i < list.length; i++) {
+                            html += '<tr class="pTableTr">' +
+                                '<td class="programName-' + list[i].id + '">' + list[i].program;
+                            if (list[i].isScheduled) html += '<p style="font-size: x-small;"> Class normally held every <br>' + list[i].dayOfWeek + ' from ' + tConvert(list[i].stc) + ' - ' + tConvert(list[i].etc) + '</p>';
+                            //[RP] - added else ifcode from [RGE] 04-MAR-2022
+                            else if(list[i].schedules.length){
+				list[i].schedules.forEach((item)=>{
+					html += '<p style="font-size: x-small;"> Class normally held every ' + item + '</p>';							
+				});
+			     }
+                             else html += '<p style="font-size: xx-small;"> This class can be scheduled based on teacher availability, <br>please contact us at <a href="info@musicforlifekids.com">info@musicforlifekids.com</a> <br> for scheduling options! </p>';
+                            html += '</td>' +
+                                '<td class="cat-' + list[i].id + '">' + list[i].prog_category + '</td>';
+                            if (isNumber(list[i].amount_weekly))
+                                html += '<td class="amn-' + list[i].id + '" >$ ' + parseFloat(list[i].amount_weekly).toFixed(2) + ' / Class</td>';
+                            else
+                                html += '<td class="amn-' + list[i].id + '" >' + list[i].amount_weekly + '</td>';
+                            html += '<td class="dur-' + list[i].id + '" style="max-width: 200px;">' + indent(list[i].duration) + '</td>';
+                            if (list[i].description.length >= 50) html += '<td class="longDescription-' + list[i].id + '" style="cursor: pointer;" title="' + list[i].description + '"><p>' + list[i].description.substring(0, 50) + '... <b style="font-size: 10px;display: block;">(hover to see more)</b></p></td>';
+                            else html += '<td class="longDescription-' + list[i].id + '">' + list[i].description + '</td>';
+                            html += '<td><button class="btn btn-default selectProgram" data-id="' + list[i].id + '" data-bs-toggle="modal" data-bs-target="#myModal">Choose this Program</button></td>';
+                            html += '</tr>';
+                        }
+                    } else {
+                        $('.mobileMode').hide();
+                        html = '';
+                        for (var i = 0; i < list.length; i++) {
+                            var programName = list[i].program;
+                            programName = programName.split(/((?:\w+ ){4})/g).filter(Boolean).join("<br>");
+                            var description = list[i].description;
+                            description = description.split(/((?:\w+ ){5})/g).filter(Boolean).join("<br>");
+                            html += '<tr class="pTableTr "  data-toggle="collapse" class="accordion-toggle" style="cursor: pointer" data-target="#accordion-prog-' + list[i].id + '">' +
+                                '<td class="programName-' + list[i].id + '">' + programName + '<i class="fa fa-arrow-down arrowIcon" aria-hidden="true" style="float: right; padding-right: 10px;"></i></td>' +
+                                '</tr>';
+                            html += '<tr class="accordion-row-' + list[i].id + '">' +
+                                '<td colspan="12" class="hiddenRow">' +
+                                '<div class="accordian-body collapse" id="accordion-prog-' + list[i].id + '" aria-expanded="true" >' +
+                                '<div class="row" style="background-color: transparent; margin: 20px 0; padding:0;">\
+                                    <div class="col-xs-12 small heading" style="background-color: transparent; padding:0;">\
+                                        <ul id="primary-menu" class="nav-menu" aria-expanded="true" style="padding:0;">';
+                            html += '<li >Age Group:  <p class="cat-' + list[i].id + '">' + list[i].prog_category + '</p></li>';
+                            if (isNumber(list[i].amount_weekly))
+                                html += '<li  >Program Cost: <p class="amn-' + list[i].id + '">$ ' + parseFloat(list[i].amount_weekly).toFixed(2) + ' / Class </p> </li>';
+                            else
+                                html += '<li >Program Cost: <p class="amn-' + list[i].id + '" >' + list[i].amount_weekly + '</p></li>';
+
+                            html += '<li >Class Duration: <p class="dur-' + list[i].id + '" style="max-width: 200px;">' + indent(list[i].duration) + '</p></li>';
+                            if (list[i].description.length >= 50) html += '<li>Program Description: <br> <p class="longDescription-' + list[i].id + '" style="cursor: pointer;" title="' + list[i].description + '">' + list[i].description.substring(0, 50) + '... <b style="font-size: 10px;display: block;">(click to see more)</b></p></li>';
+                            else html += '<li >Program Description: <p class="longDescription-' + list[i].id + '">' + description + '</p></li>';
+                            html += ' <li ><button class="btn btn-default selectProgram" data-id="' + list[i].id + '" data-toggle="modal" data-target="#myModal">Choose this Program</button></li>';
+                            html += '</ul>' +
+                                '</div>\
+                            </div>' +
+                                '</div>' +
+                                '</td>' +
+                                '</tr>';
+                        }
+                    }
+                    if (html) $("#programBody").prepend($(html));
+                    $("body").scrollTop(350);
+                    selectprogram();
+                    if (screenSize < 670) {
+                        /*setTimeout(function () {*/
+                        /*    $(".forMobile-school").css('margin', '0');*/
+                        /*    $(".program0").css('cssText', 'position: inherit; margin-top: 185px !important;');*/
+                        /*}, 1000);*/
+                        /* [RP] removed - sep 9 -23 */
+                    }
+                });
+            });
+        };
+        reloadApply();
+        var $div = $("#myModal");
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.attributeName === "class") {
+                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
+                    if ($('#myModal').hasClass('in')) {
+                        $('.selectProgram').hide();
+                        $('.arrowIcon').hide();
+                        $('#main-header').hide();
+                        var modalDiv = 'appendModal';
+                        // $("#myModalLabel").text("Payment Frequency for ");
+                        $("#modalTBody").children().remove();
+                        $("#appendModal").hide();
+                        $("#modalFormData").show();
+                    }
+                    else {
+                        $('.selectProgram').show();
+                        $('.arrowIcon').show();
+                        $('#main-header').show();
+                        $(".modal-body>h3").remove();
+                        $(".modal-body>h4").remove();
+                        $("#createPayment").val("Sign-Up");
+                        $('.showLoading').hide();
+                    }
+                }
+            });
+        });
+        observer.observe($div[0], {
+            attributes: true
+        });
+        /*// [RP] resize modal - jul-31-2023*/
+        $(window).on('resize', function () {
+            var win = $(this);
+            screenSize = win.width();
+            if (win.width() > 1284) {
+                //$('.modal-lg').css('width', '1400px');
+            }
+            if (win.width() <= 1164) {
+               // $('.modal-lg').css('width', '1100px');
+            }
+            if (win.width() == 375) {
+            }
+            if (win.width() <= 360) {
+                //$('.modal-lg').css('width', '');
+                if (win.width() == 375) {
+                }
+            }
+            var fetchSchoolTimer = null;
+            if (win.width() > 1000) {
+                /*fetchSchool($("#state").val());*/
+                /*$('.makeBigger').addClass('col-xs-3');*/
+                /*$('.makeBigger').removeClass('col-xs-12');*/
+            }
+            else {
+                /*fetchSchool($("#state").val());*/
+                /*$('.makeBigger').addClass('col-xs-12');*/
+                /*$('.makeBigger').removeClass('col-xs-3');*/
+                if (selectedSchoolId) {
+                    /*console.info("selectedschool"); //ronie*/
+                    /*$(".program0").show('slow');*/
+                    /*$("#schoolTable").hide();*/
+                    /*$(".schoolSelected").show('slow');*/
+                    /*$(".panelInfo1").hide('slow');*/
+                    /*$(".mytable").show('slow');*/
+                    /*$(".state0").hide('slow');*/
+                    /*$(".program0").css('position', 'inherit');*/
+                    /*$(".program0").css('cssText', 'margin-top: 185px !important;');*/
+                    /*$(".forMobile-school").css('margin', '0');*/
+                }
+                $('.modal-lg').css('width', '');
+                if (win.width() <= 640) {
+                    $('.modal-lg').css('width', '');
+                }
+            }
+        });
+    });
+/*test fix: kurt*/
+var style = document.createElement('style');
+style.textContent = '.modal-backdrop { display: none !important; }';
+document.head.appendChild(style);
+</script>

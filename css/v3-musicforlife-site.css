@@ -1,0 +1,4305 @@
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-Light-08.ttf') format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-Medium-11.ttf') format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-UltraLight-06.ttf') format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-Bold-02.ttf') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-01.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-Thin-13.ttf') format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helveticaneue;
+  src: url('../fonts/HelveticaNeue-Italic-03.ttf') format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Byrd;
+  src: url('../fonts/Byrd-Bold.ttf') format("truetype"), url('../fonts/Byrd-ExtraBold.ttf') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Byrd;
+  src: url('../fonts/Byrd-ExtraBold.ttf') format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --sandy-brown: #ffa44c;
+  --link-color: #2ea3f2;
+  --yellow-green: #b1cb34;
+  --dark-slate-grey: #3a4149;
+  --dark-violet: #70348f;
+  --olive-drab: #859827;
+  --btn-color-1: #1e73be;
+  --blue-violet: #7f47dd;
+  --blue-bg: #e9f7ff;
+  --red: #e62526;
+  --orange: #f9ae00;
+  --gold: #fbce66;
+  --khaki: #d0e085;
+  --indian-red: #eb5151;
+  --light-grey: #ccc;
+  --dark-slate-blue: #0f3a5f;
+  --hero-bg: #f2f8fa;
+  --sandy-brown-2: #ffa14a;
+}
+
+.w-checkbox {
+  margin-bottom: 5px;
+  padding-left: 20px;
+  display: block;
+}
+
+.w-checkbox:before {
+  content: " ";
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
+}
+
+.w-checkbox:after {
+  content: " ";
+  clear: both;
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
+}
+
+.w-checkbox-input {
+  float: left;
+  margin: 4px 0 0 -20px;
+  line-height: normal;
+}
+
+.w-checkbox-input--inputType-custom {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 12px;
+  height: 12px;
+}
+
+.w-checkbox-input--inputType-custom.w--redirected-checked {
+  background-color: #3898ec;
+  background-image: url('https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-color: #3898ec;
+}
+
+.w-checkbox-input--inputType-custom.w--redirected-focus {
+  box-shadow: 0 0 3px 1px #3898ec;
+}
+
+body {
+  color: #333;
+  font-family: Rubik, sans-serif;
+  font-size: .9rem;
+  line-height: 1.5em;
+}
+
+p {
+  margin-bottom: 10px;
+  font-size: .9rem;
+  line-height: 1.4em;
+}
+
+a {
+  color: var(--sandy-brown);
+  cursor: pointer;
+}
+
+a:hover {
+  color: #cf8339;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.login-text {
+  text-align: center;
+  font-size: .9rem;
+}
+
+.login-text-div {
+  margin-top: 20px;
+}
+
+.span-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.form-block {
+  width: 80%;
+}
+
+.login-field-wrap {
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.login-field-wrap.margin-top-zero {
+  margin-top: 0;
+}
+
+.field-label {
+  color: #333;
+  border-radius: 5px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.text-field {
+  background-color: #f7f7f7;
+  border: .5px solid #0000004d;
+  border-radius: 5px;
+  height: 48px;
+  font-size: .9rem;
+}
+
+.form-row {
+  margin-bottom: 20px;
+}
+
+.form-row.horizontal {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+}
+
+.btn-wrapper {
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  display: flex;
+}
+
+.select-field {
+  color: #383838;
+  background-color: #fff;
+  border: .5px solid #0003;
+  border-radius: 5px;
+  height: 38px;
+}
+
+.p_large {
+  color: #333c;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.table-row {
+  border-bottom: .5px solid #b3b3b31a;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+}
+
+.h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.2em;
+}
+
+.h5.blue {
+  color: var(--link-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.h5.mt-10 {
+  margin-top: 10px;
+}
+
+.p-small {
+  color: #333c;
+  margin-bottom: 0;
+  font-size: .7rem;
+}
+
+.list-item {
+  margin-bottom: 10px;
+  font-size: .9rem;
+}
+
+.textarea {
+  color: #333c;
+  border-radius: 5px;
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+.h2 {
+  color: var(--link-color);
+  margin-top: 0;
+  font-family: Byrd, Tahoma, sans-serif;
+  font-size: 3.6rem;
+  line-height: 1.2em;
+}
+
+.h2.blue {
+  color: #2ea3f2;
+}
+
+.h2.blue.bigger {
+  font-size: 2.8rem;
+  line-height: 1.2em;
+}
+
+.h2.blue.bigger.mb-0 {
+  margin-bottom: 0;
+}
+
+.h2.testimonials {
+  font-size: 5.2rem;
+}
+
+.h2.violet {
+  color: #70348f;
+}
+
+.h2.dark {
+  color: #3a4149;
+}
+
+.h2.hero {
+  text-align: center;
+  font-size: 5rem;
+}
+
+.h2.hero.violet.small {
+  font-size: 3.8rem;
+}
+
+.h2.center {
+  text-align: center;
+}
+
+.h2.center.smaller {
+  font-size: 2.4rem;
+}
+
+.h2.smaller {
+  font-size: 2.2rem;
+}
+
+.h2.smaller.dark-violet {
+  color: #70348f;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.utility-page-wrap {
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  display: flex;
+}
+
+.utility-page-content {
+  text-align: center;
+  flex-direction: column;
+  width: 260px;
+  display: flex;
+}
+
+.utility-page-form {
+  flex-direction: column;
+  align-items: stretch;
+  display: flex;
+}
+
+.h1 {
+  color: #fff;
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+.h1.hero {
+  text-shadow: 3px 3px 8px #000000a1;
+  margin-top: 0;
+  font-family: Byrd, Tahoma, sans-serif;
+  font-size: 6vw;
+  font-weight: 800;
+}
+
+.h1.hero.bold {
+  font-weight: 700;
+}
+
+.link-style1 {
+  color: var(--link-color);
+  font-size: .9rem;
+  line-height: 1.4em;
+  text-decoration: none;
+}
+
+.button {
+  cursor: pointer;
+  background-color: #ed9d00;
+  background-image: linear-gradient(90deg, #ffa14a, #ff867a);
+  border-radius: 10px;
+  padding: 12px 30px;
+  font-size: .95rem;
+}
+
+.button:hover {
+  color: #fff;
+  background-color: #da9205;
+  text-decoration: none;
+}
+
+.button.smaller {
+  border-radius: 7px;
+  padding: 7px 15px;
+}
+
+.page {
+  flex-direction: column;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+.hero-section {
+  background-color: #f2f8fa;
+  background-image: url('../images/musicforlife-hero-texture-notes.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  margin-top: -87px;
+  padding-top: 0;
+  position: relative;
+}
+
+.navbar-margin {
+  justify-content: space-between;
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding-top: 5px;
+  display: flex;
+}
+
+.navbar {
+  background-color: #0000;
+}
+
+.navbar.floating {
+  background-color: #fff;
+}
+
+.navbar.static {
+  background-color: #fff;
+  align-self: stretch;
+}
+
+.margin {
+  width: 1200px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margin.hero {
+  flex: 0 auto;
+  width: 90vw;
+}
+
+.margin.auto {
+  height: auto;
+}
+
+.hero-content {
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
+  display: flex;
+}
+
+.hero-content.style2 {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.hero-content.style2.locations {
+  padding-top: 40px;
+}
+
+.brand {
+  align-items: center;
+  width: 120px;
+  display: flex;
+}
+
+.brand.w--current {
+  width: 200px;
+  margin-top: -35px;
+}
+
+.nav-link {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: .9rem;
+}
+
+.nav-link.w--current {
+  color: var(--sandy-brown);
+}
+
+.top-navbar {
+  background-color: #70348f;
+  border-bottom-left-radius: 20px;
+  align-items: center;
+  width: 75%;
+  height: 35px;
+  display: flex;
+}
+
+.top-nav-margin {
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 5vw;
+  padding-top: 2px;
+  display: flex;
+}
+
+.top-nav-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.top-nav-div {
+  color: #333;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0;
+  font-size: .75rem;
+  line-height: 1.3em;
+  text-decoration: none;
+  display: flex;
+}
+
+.top-nav-text {
+  color: #fff;
+  margin-top: 0;
+  text-decoration: none;
+}
+
+.nav-dropdown-toggle {
+  color: #333;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: .8rem;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-dropdownlist {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 0;
+  display: none;
+  overflow: hidden;
+  box-shadow: 0 0 5px #0003;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-search {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.nav-search-icon {
+  width: 30px;
+  height: 30px;
+  padding: 3px 5px 5px;
+}
+
+.hero-text {
+  border: 5px solid var(--yellow-green);
+  background-image: linear-gradient(#0000004d, #0006);
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  flex-direction: column;
+  justify-content: center;
+  width: 65%;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  position: absolute;
+  inset: auto 3% 0% auto;
+}
+
+.p-hero {
+  color: var(--dark-slate-grey);
+  font-size: 1.5rem;
+}
+
+.p-hero.semibold.dark {
+  color: var(--dark-slate-grey);
+}
+
+.p-hero.white {
+  color: #fff;
+}
+
+.hero-slider-content {
+  justify-content: space-between;
+  width: auto;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  position: relative;
+}
+
+.hero-slider {
+  background-color: #0000;
+  height: 85vh;
+}
+
+.hero-slide-nav {
+  width: 40%;
+  margin-left: 0;
+}
+
+.mask {
+  overflow: hidden;
+}
+
+.testimonials-main-container {
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  display: flex;
+}
+
+.testimonials-card {
+  color: #fff;
+  text-align: center;
+  background-color: #e0eaae;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 25px 30px 20px;
+  display: flex;
+  position: relative;
+  top: -60px;
+  box-shadow: 0 0 20px #00000026;
+}
+
+.testimonials-card:where(.w-variant-6a9c8f3a-a2e1-b1a0-bce7-e9ffaf1b1bcc) {
+  background-color: #e0eaae;
+}
+
+.testimonials-card:where(.w-variant-6d939c24-3345-0c9c-8e32-50e7e6a4613d) {
+  background-color: #99d8ee;
+  margin-left: 0;
+  top: 130px;
+  left: -40px;
+}
+
+.testimonials-card:where(.w-variant-fcb12fee-c4ad-505d-9197-e14701ac15ae) {
+  background-color: #e2d6e9;
+  top: 40px;
+}
+
+.testimonials-card:where(.w-variant-8402fcbe-1819-b0c7-f335-0965d2546c96) {
+  background-color: #f9d3d4;
+  top: -10px;
+}
+
+.testimonials-card:where(.w-variant-94b39143-44ad-561f-1b12-f951ab3df6d6) {
+  background-color: #ffecdb;
+  top: 100px;
+  left: -40px;
+}
+
+.p-testimonials {
+  color: var(--dark-slate-grey);
+}
+
+.p-testimonials.smaller {
+  font-size: .8rem;
+}
+
+.text-testimonial-name {
+  color: var(--dark-slate-grey);
+  margin-top: 10px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.section {
+  flex: 1;
+}
+
+.section.whatparentssay {
+  background-color: #efefef4a;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.section.links {
+  background-image: url('../images/musicforlife-image-curve-white.png'), linear-gradient(#efefef5c, #efefef5c);
+  background-position: 50% -5%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: contain, auto;
+}
+
+.section.why-music-matters {
+  background-color: #efefef4a;
+  background-image: url('../images/musicforlife-image-curve-white.png');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-top: 5%;
+}
+
+.section.login {
+  background-image: url('../images/musicforlife-iamge-wave-blue.png');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.section.signup {
+  background-image: url('../images/musicforlife-iamge-wave-blue.png');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.section-card {
+  justify-content: space-around;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+}
+
+.section-card._w-80 {
+  width: 80%;
+}
+
+.card-features {
+  background-color: #f6f8ec;
+  border: 1px solid #b1cb35;
+  border-radius: 15px;
+  width: 23%;
+  padding: 15px 20px;
+}
+
+.card-features.white {
+  background-color: #fff;
+  border-style: none;
+  border-radius: 20px;
+  flex-flow: column;
+  width: 23%;
+  display: flex;
+  box-shadow: 0 0 12px #0000000f;
+}
+
+.card-features.white.home {
+  box-shadow: none;
+}
+
+.p {
+  font-size: 1.05rem;
+  line-height: 1.5em;
+}
+
+.p.text-center {
+  text-align: center;
+}
+
+.p.p_large {
+  font-size: 1.2rem;
+}
+
+.p.p_large.align-left {
+  text-align: left;
+}
+
+.p.p_large.align-left.white {
+  color: #fff;
+  font-weight: 300;
+}
+
+.card-p {
+  margin-top: 5px;
+}
+
+.section-container {
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+.section-container.center {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.section-container.less-top {
+  padding-top: 0;
+}
+
+.section-hd-div {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 40px;
+  display: flex;
+}
+
+.section-hd-div._80 {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.section-hd-div.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.section-hd-div.center._80 {
+  text-align: center;
+}
+
+.btn {
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #ffa14a, #ff867a);
+  border-radius: 7px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 0 9px #0000004d;
+}
+
+.btn:hover {
+  background-color: #e08837;
+}
+
+.btn.blue {
+  background-color: var(--link-color);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.btn.hero {
+  white-space: nowrap;
+  background-image: url('../images/musicforlife-icon-arrow-right.svg'), linear-gradient(90deg, #ffa14a, #ff867a);
+  background-position: 90%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: 20px, auto;
+  padding: 15px 40px 15px 20px;
+  line-height: 1em;
+}
+
+.btn.hero:hover {
+  color: #fff;
+}
+
+.hero-btn {
+  margin-top: 0;
+}
+
+.section-stats-content {
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2%;
+  padding-bottom: 10%;
+  display: flex;
+}
+
+.card-stats {
+  color: #fff;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  width: 22%;
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: flex;
+}
+
+.stats-icon {
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+}
+
+.h6 {
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.tab-container-div {
+  width: 80%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab-container-div.hide {
+  display: none;
+}
+
+.tab-link-div {
+  text-align: left;
+  background-color: #fff;
+  background-image: url('../images/musicforlife-icon-circle-blue.svg');
+  background-position: -20%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-radius: 15px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 45px;
+  font-weight: 600;
+  line-height: 1.3em;
+  display: flex;
+  box-shadow: 0 0 14px #0003;
+}
+
+.tab-link-div.w--current {
+  background-color: #ffead8;
+}
+
+.tab-link-div.green {
+  background-image: url('../images/musicforlife-icon-circle-green.svg');
+}
+
+.tab-link-div.violet {
+  background-image: url('../images/musicforlife-icon-circle-purple.svg');
+}
+
+.tab-menu-div {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.tab-pane-content {
+  padding: 10px;
+}
+
+.card-white {
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 30px;
+}
+
+.card-white-content {
+  padding: 10px 30px 30px;
+}
+
+.paragraph-div {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.paragraph-div.margin-0 {
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+}
+
+.list-div {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.cta-section {
+  background-color: #fff;
+  background-image: url('../images/musicforlife-background-cta.png');
+  background-position: 50% 101%;
+  background-repeat: no-repeat;
+  background-size: 101%;
+}
+
+.cta-content {
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+}
+
+.cta-hd {
+  color: #fff;
+  font-size: 3.6rem;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.footer-section {
+  background-color: #2c353d;
+}
+
+.footer-content {
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  display: flex;
+}
+
+.footer-icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav-dropdown-link:hover {
+  color: #c7762a;
+  background-color: #fff7f0;
+}
+
+.hero-section-style2 {
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto;
+  height: 18vw;
+  position: relative;
+}
+
+.hero-section-style2.location, .hero-section-style2.university, .hero-section-style2.about-us {
+  height: 20vw;
+}
+
+.hero-section-style2.grow {
+  flex: 1;
+}
+
+.hero-section-style2.about-us-copy {
+  height: 20vw;
+}
+
+.search-button-hide {
+  display: none;
+}
+
+.table-participating-locations {
+  color: #333c;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 40px;
+  box-shadow: 0 0 7px #00000047;
+}
+
+.table-hd {
+  background-color: #d2eaf9;
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 600;
+  display: flex;
+}
+
+.table-col {
+  width: 25%;
+}
+
+.table-col._15 {
+  width: 15%;
+}
+
+.table-col._30 {
+  width: 30%;
+  padding-right: 10px;
+}
+
+.table-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.table-results {
+  color: #333333b3;
+  margin-top: 20px;
+  font-size: .8rem;
+}
+
+.h3 {
+  color: var(--olive-drab);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.h3.black {
+  color: #0e0e0e;
+  margin-top: 0;
+}
+
+.h3.black.margin-0 {
+  margin-bottom: 0;
+}
+
+.h3.black.teachers-name {
+  color: var(--link-color);
+  font-family: Byrd, Tahoma, sans-serif;
+  font-size: 2.8rem;
+}
+
+.h3.medium {
+  font-weight: 500;
+}
+
+.h3.dark-violet {
+  color: var(--dark-violet);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.h3.orange {
+  color: var(--sandy-brown);
+  font-weight: 400;
+}
+
+.center-text {
+  width: 75%;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-text.align-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.icon-small {
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  display: flex;
+}
+
+.center-wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  display: flex;
+}
+
+.card-teacher {
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 140px;
+  margin-bottom: -120px;
+  padding: 40px;
+  display: flex;
+}
+
+.card-teacher.align-start {
+  align-items: flex-start;
+}
+
+.card-teacher_photo {
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  display: flex;
+  position: relative;
+}
+
+.card-teacher_content {
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 40px;
+  display: flex;
+}
+
+.slider-track {
+  justify-content: center;
+  align-items: stretch;
+  width: auto;
+  height: 100%;
+  padding-top: 10%;
+  padding-bottom: 15%;
+  display: flex;
+}
+
+.nav-dropdown-toggle-div {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  font-size: .8rem;
+  display: block;
+}
+
+.nav-right {
+  display: flex;
+}
+
+.nav-search-popup {
+  background-color: #ececec;
+  border-radius: 10px;
+  width: 250px;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: none;
+  position: absolute;
+  inset: 50px 0% auto auto;
+  box-shadow: 0 2px 5px #0003;
+}
+
+.nav-search-input {
+  border-radius: 5px;
+}
+
+.right-arrow {
+  filter: drop-shadow(0 2px 5px #0000004d);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  display: block;
+  right: 5%;
+}
+
+.right-arrow:hover {
+  transform: scale(1.2);
+}
+
+.left-arrow {
+  filter: drop-shadow(0 2px 5px #0000004d);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  display: block;
+  left: 5%;
+}
+
+.left-arrow:hover {
+  transform: scale(1.2);
+}
+
+.nav-div {
+  z-index: 80;
+  height: 87px;
+  position: relative;
+}
+
+.contact-us-textarea {
+  height: 150px;
+  display: flex;
+}
+
+.floating-navbar {
+  z-index: 50;
+  background-color: #fff;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  display: none;
+  position: fixed;
+  inset: 0% 0% auto;
+  box-shadow: 0 3px 10px #0003;
+}
+
+.div-block-76 {
+  background-color: #fff;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  display: flex;
+}
+
+.university-sticky-links-div {
+  z-index: 10;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 20px auto;
+  padding: 40px 3% 10px;
+  display: flex;
+  position: sticky;
+  top: 60px;
+}
+
+.university-sticky-links {
+  color: var(--dark-slate-grey);
+  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
+  width: 24%;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+}
+
+.university-icons {
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.university-text-link {
+  background-color: #efefef;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 190px;
+  margin-left: -25px;
+  padding: 15px 15px 15px 35px;
+}
+
+.university-features-div {
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 40px auto 0;
+  display: flex;
+  position: absolute;
+  inset: 0% 0% auto;
+}
+
+.icon-medium {
+  width: 35px;
+  height: 35px;
+}
+
+.university-feature {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 100px;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+}
+
+.card-university {
+  border-radius: 35px;
+  justify-content: space-between;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 29px 3%;
+  display: flex;
+  position: relative;
+}
+
+.card-university-image {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  display: flex;
+}
+
+.card-university-text {
+  flex-flow: column;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 5%;
+  display: flex;
+}
+
+.icon-large {
+  width: 50px;
+  height: 50px;
+}
+
+.card-university-text-hd {
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.div-block-80 {
+  margin-left: 10px;
+}
+
+.card-university-text-p {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.card-text-list-item {
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.card-text-list-item.mb-40 {
+  margin-bottom: 40px;
+}
+
+.card-text-list-text {
+  flex: 1;
+  margin-top: -5px;
+  margin-left: 10px;
+}
+
+.card-text-list {
+  margin-top: 0;
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+.card-text-list.mt-40 {
+  margin-top: 40px;
+}
+
+.card-university-div {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 140px;
+  position: relative;
+}
+
+.section-container-university {
+  flex-flow: column;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  display: flex;
+  position: relative;
+}
+
+.card-university-trigger {
+  height: 50px;
+}
+
+.card-university-container {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.center-text-div {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-text-div._w-70 {
+  width: 70%;
+}
+
+.university-links-div {
+  justify-content: space-between;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  display: flex;
+}
+
+.card-additional-links {
+  border-radius: 10px;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 30%;
+  padding: 25px;
+  display: flex;
+}
+
+.card-features-image {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-us-sublink-div {
+  justify-content: space-between;
+  align-self: stretch;
+  width: auto;
+  margin-bottom: 5vw;
+  display: flex;
+}
+
+.about-us-sublink {
+  color: var(--dark-slate-grey);
+  background-color: #fff;
+  background-image: url('../images/musicforlife-icon-circle-blue.svg');
+  background-position: -30%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-radius: 10px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 16%;
+  padding: 10px 10px 10px 40px;
+  font-weight: 500;
+  line-height: 1.3em;
+  text-decoration: none;
+  display: flex;
+  box-shadow: 0 0 11px #0003;
+}
+
+.about-us-sublink:where(.w-variant-50c46dd5-71d8-d652-2073-803ee0908cfd) {
+  background-image: url('../images/musicforlife-icon-circle-orange.svg');
+}
+
+.about-us-sublink:where(.w-variant-e37993ed-783d-1e45-57d8-c1221318f126) {
+  background-image: url('../images/musicforlife-icon-circle-green.svg');
+}
+
+.about-us-sublink:where(.w-variant-61475172-0626-1576-fa06-0c04daaa3da1) {
+  background-image: url('../images/musicforlife-icon-circle-purple.svg');
+}
+
+.about-us-sublink:where(.w-variant-fa96c72d-c170-e64b-91fb-fbc25e60695c) {
+  background-image: url('../images/musicforlife-icon-circle-red.svg');
+}
+
+.about-us-main-container {
+  justify-content: space-between;
+  align-self: stretch;
+  margin-bottom: 4vw;
+  display: flex;
+}
+
+.about-us-text-content {
+  flex: 1;
+  margin-left: 5%;
+}
+
+.contact-us-form {
+  width: 45%;
+}
+
+.form-wrapper {
+  background-color: #ffead833;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  display: flex;
+  box-shadow: 1px 1px 3px #0003;
+}
+
+.tag-page {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.text-content {
+  align-self: stretch;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.content-row {
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto 80px;
+  display: flex;
+}
+
+.content-col {
+  width: 50%;
+}
+
+.content-col-image {
+  width: 45%;
+}
+
+.sticky-teachers-sublink {
+  z-index: 4;
+  background-color: #fff;
+  justify-content: space-between;
+  align-self: stretch;
+  margin-bottom: 5vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 5%;
+  display: flex;
+  position: sticky;
+  top: 80px;
+}
+
+.teachers-sublink {
+  color: var(--dark-slate-grey);
+  background-color: #fff;
+  background-image: url('../images/musicforlife-icon-circle-blue.svg');
+  background-position: -10%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-radius: 10px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 32%;
+  padding: 15px 10px 15px 6%;
+  font-weight: 500;
+  line-height: 1.3em;
+  text-decoration: none;
+  display: flex;
+  box-shadow: 0 0 11px #0003;
+}
+
+.teachers-sublink:where(.w-variant-50c46dd5-71d8-d652-2073-803ee0908cfd) {
+  background-image: url('../images/musicforlife-icon-circle-orange.svg');
+}
+
+.teachers-sublink:where(.w-variant-e37993ed-783d-1e45-57d8-c1221318f126) {
+  background-image: url('../images/musicforlife-icon-circle-green.svg');
+}
+
+.teachers-sublink:where(.w-variant-61475172-0626-1576-fa06-0c04daaa3da1) {
+  background-image: url('../images/musicforlife-icon-circle-purple.svg');
+}
+
+.teachers-sublink:where(.w-variant-fa96c72d-c170-e64b-91fb-fbc25e60695c) {
+  background-image: url('../images/musicforlife-icon-circle-red.svg');
+}
+
+.teachers-sublink:where(.w-variant-cd94cabb-f5b5-a151-e460-7873d2e0760e) {
+  background-image: url('../images/musicforlife-icon-circle-orange.svg');
+}
+
+.teachers-sublink:where(.w-variant-46777032-22d6-088e-429c-f8bdf73bec1f) {
+  background-image: url('../images/musicforlife-icon-circle-green.svg');
+}
+
+.text-teachers-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.teachers-position {
+  font-weight: 400;
+}
+
+.teachers-position.bigger {
+  color: var(--dark-violet);
+  font-family: Byrd, Tahoma, sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.6em;
+}
+
+.teachers-content {
+  align-self: stretch;
+  position: relative;
+}
+
+.teachers-card-content {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -208px;
+  margin-bottom: 220px;
+  padding-top: 0;
+  display: flex;
+}
+
+.card-teacher-trigger {
+  align-self: stretch;
+  height: 50px;
+  margin-top: 60px;
+}
+
+.hero-slider1 {
+  background-image: url('../images/musicforlife-image-slider1.jpg');
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+}
+
+.hero-notes {
+  width: 400px;
+  margin-top: -34px;
+  margin-bottom: -18px;
+  margin-left: -38px;
+}
+
+.slider-text-container {
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 5%;
+  display: flex;
+}
+
+.slider-p-content {
+  flex: 0 auto;
+  width: 80%;
+  margin-right: 20px;
+}
+
+.topnav-left {
+  color: var(--sandy-brown);
+  justify-content: flex-start;
+  align-items: center;
+  font-size: .9rem;
+  line-height: 1.5em;
+  display: flex;
+}
+
+.topnav-right {
+  color: var(--sandy-brown);
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 40px;
+  font-size: .9rem;
+  line-height: 1.5em;
+  display: flex;
+}
+
+.hero-slider2 {
+  background-image: url('../images/musicforlife-image-slider2.jpg');
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+}
+
+.hero-slider3 {
+  background-image: url('../images/musicforlife-image-slider3.jpg');
+  background-position: 50% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+}
+
+.hero-slider4 {
+  background-image: url('../images/musicforlife-image-slider4.jpg');
+  background-position: 50% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+}
+
+.hero-slider5 {
+  background-image: url('../images/musicforlife-image-slider5.jpg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+}
+
+.card-testimonials-container {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.card-testimonials-container.whatparentssay {
+  padding-bottom: 0;
+}
+
+.card-testimonials {
+  background-image: url('../images/musicforlife-image-slider2.jpg');
+  background-position: 0 0;
+  background-size: auto;
+  border-radius: 30px;
+  justify-content: flex-end;
+  width: 90%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.card-testimonials.musicbrain {
+  background-image: url('../images/musicforlife-photo-musicbrain.jpg');
+  background-position: 50%;
+  background-size: cover;
+  justify-content: flex-start;
+}
+
+.card-testimonials.enrichschool {
+  background-image: url('../images/musicforlife-photo-enrichingschool.jpg');
+  background-position: 100%;
+  background-size: 120%;
+}
+
+.card-testimonials.musicmatter {
+  background-image: url('../images/musicforlife-photo-musicmatter.jpg');
+  background-position: 50% 100%;
+}
+
+.card-testimonials-text-content {
+  background-color: #0000004f;
+  flex-flow: column;
+  width: 50%;
+  padding: 5%;
+  display: flex;
+}
+
+.card-testimonials-text-content.align-center {
+  background-color: #00000080;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.h2_style2 {
+  color: var(--sandy-brown);
+  margin-top: 0;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+.testimonials-slider {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+}
+
+.testimonials-container {
+  background-image: url('../images/musicforlife-image-wave.png');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-self: stretch;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.p-testimonials-div {
+  flex-flow: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.hero-testimonials-grey {
+  z-index: 1;
+  background-color: #3a4149;
+  background-image: url('../images/musicforlife-texture-notes.png'), url('../images/musicforlife-gray-cuve.png'), url('../images/musicforlife-background-testimonials.png');
+  background-position: 50%, 50% 101%, 50%;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: cover, 100%, cover;
+  display: block;
+  position: relative;
+}
+
+.testimonials-card-style2 {
+  text-align: center;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px 30px;
+  display: flex;
+  position: relative;
+}
+
+.p-testimonials-dark {
+  color: #333;
+  margin-bottom: 0;
+}
+
+.text-testimonial-name-dark {
+  color: #333;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.map-container {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  height: 50vh;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 5px #0003;
+}
+
+.search-formblock {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.location-hd-div {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  display: flex;
+  position: relative;
+}
+
+.search-school-input {
+  background-image: linear-gradient(#fffc, #fffc), url('../images/musicforlife-topnav-search.svg');
+  background-position: 0 0, 15px;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, 25px 25px;
+  border: 1px solid #c9c9c9;
+  border-radius: 50px;
+  height: 45px;
+  margin-bottom: 0;
+  margin-right: 10px;
+  padding-left: 50px;
+}
+
+.suggestions {
+  z-index: 999;
+  width: 90%;
+  margin-left: 50px;
+  display: none;
+  position: absolute;
+  top: 100%;
+}
+
+.map-wrap {
+  background-color: #f2f8fa;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.search-schools {
+  width: 60%;
+  margin-top: 10px;
+}
+
+.search-school {
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.founder-left {
+  justify-content: center;
+  align-items: flex-start;
+  width: 30%;
+  display: flex;
+}
+
+.about-the-founder {
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  display: flex;
+}
+
+.h3-style2 {
+  color: gray;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.founders-name-div {
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 60px;
+  display: flex;
+}
+
+.h5-style2 {
+  color: var(--dark-slate-grey);
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 10px;
+  font-size: 1.4rem;
+  line-height: 1.2em;
+}
+
+.founder-right {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.founder-photo {
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: flex;
+  position: relative;
+}
+
+.founders-details {
+  width: 80%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.hero-section-style3 {
+  background-color: #fff;
+  background-image: url('../images/musicforlife-hero-texture-02.svg');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 115%;
+  flex: 1;
+  height: auto;
+  position: relative;
+}
+
+.career-form-wrap {
+  width: 50%;
+}
+
+.career-form-row {
+  justify-content: space-between;
+  display: flex;
+}
+
+.career-form-colhalf {
+  width: 49.5%;
+}
+
+.job-icon-minus {
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  display: none;
+}
+
+.job-icon-plus {
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  display: flex;
+}
+
+.job-items-container {
+  display: none;
+}
+
+.jobs-lists {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 20rem;
+}
+
+.job-group-item {
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+}
+
+.job-groupheading {
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.jobrole-left {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.job-group {
+  border-bottom: 1px solid #0003;
+  flex-flow: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  display: flex;
+}
+
+.h2-section-hd-text {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2em;
+}
+
+.h2-section-hd-text.subsection {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  line-height: 1.4em;
+}
+
+.h2-section-hd-text.subsection.mb-0 {
+  margin-bottom: 0;
+}
+
+.h2-section-hd-text.mb-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.h2-section-hd-text.mb-0.job-listing {
+  color: var(--btn-color-1);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.job-role-div {
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  display: flex;
+}
+
+.job-hd-text-contain {
+  width: 30%;
+}
+
+.hero-section-login {
+  background-color: #fff;
+  height: 18vw;
+  position: relative;
+}
+
+.login-wrap {
+  background-color: #fff;
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45vw;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  display: flex;
+  position: relative;
+  box-shadow: 1px 1px 20px #0000001a;
+}
+
+.teacher-card-top {
+  background-color: #f6f8ec;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 40px 40px 20px;
+  display: flex;
+}
+
+.h2-style2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+
+.teacher-card {
+  background-color: #fff;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 50vw;
+  margin-top: 5%;
+  display: flex;
+  position: relative;
+  box-shadow: 1px 1px 20px #0000001a;
+}
+
+.teacher-section {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 20rem;
+  display: flex;
+}
+
+.teacher-card-icon {
+  background-color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+}
+
+.teacher-card-details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.teacher-card-body {
+  padding: 30px 40px;
+}
+
+.tab-link-text {
+  margin-left: 10px;
+  font-size: 1.1rem;
+}
+
+.card-paragraph {
+  background-color: #e9f7ff85;
+  border-radius: 30px;
+  margin-bottom: 40px;
+  padding: 20px 30px;
+}
+
+.card-paragraph.gray {
+  background-color: #f7f7f7;
+}
+
+.card-paragraph-col {
+  width: 48%;
+  display: flex;
+}
+
+.tab-card-container {
+  flex-flow: wrap;
+  justify-content: space-between;
+  display: flex;
+}
+
+.button-back-to-top {
+  color: var(--dark-slate-grey);
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5px 3px;
+  font-size: .8rem;
+  text-decoration: none;
+  display: flex;
+}
+
+.button-back-to-top:hover {
+  background-color: #e7e7e7;
+}
+
+.button-back-to-top-text {
+  margin-top: -10px;
+}
+
+.level-hd {
+  background-color: #fff;
+  border-radius: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  box-shadow: 0 1px 6px #0003;
+}
+
+.text-level {
+  border: 2px solid var(--link-color);
+  color: var(--link-color);
+  background-color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+}
+
+.text-level.orange {
+  border-color: var(--sandy-brown);
+  color: var(--sandy-brown);
+}
+
+.text-level.green {
+  border-color: var(--yellow-green);
+  color: var(--yellow-green);
+}
+
+.text-level.purple {
+  border-color: var(--blue-violet);
+  color: var(--blue-violet);
+}
+
+.p-cta {
+  color: var(--dark-slate-grey);
+  font-size: 1.2rem;
+}
+
+.p-cta.white {
+  color: #fff;
+}
+
+.card-testimonial-body {
+  flex-flow: column;
+  flex: none;
+  justify-content: space-between;
+  margin-top: 20px;
+  display: flex;
+}
+
+.card-role {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 15px;
+  width: 31%;
+  position: relative;
+}
+
+.page-content {
+  flex: 1;
+}
+
+.page-content.signup {
+  background-color: #fff;
+}
+
+.card-teacher-content-hd {
+  margin-bottom: 10px;
+}
+
+.text-percentage {
+  opacity: 0;
+  color: var(--sandy-brown);
+  margin-bottom: -20px;
+  font-size: 1.5rem;
+}
+
+.testimonial-block-bg {
+  z-index: 1;
+  background-color: #fffbf8;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(2deg);
+}
+
+.testimonial-content {
+  z-index: 3;
+  flex-flow: column;
+  flex: 1;
+  justify-content: space-around;
+  display: flex;
+  position: relative;
+}
+
+.testimonial-block-outline {
+  z-index: 2;
+  border: 2px dashed #009ed5;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(-2deg);
+}
+
+.testimonials-card-hd {
+  color: var(--dark-slate-grey);
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+.testimonials-hd {
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.testimonials-hd-text {
+  width: 85%;
+  margin-right: -15%;
+  position: relative;
+}
+
+.icon-testimonials {
+  width: 70px;
+  height: 70px;
+}
+
+.testimonials-image {
+  width: 90%;
+}
+
+.button-div {
+  margin-top: 40px;
+}
+
+.card-text {
+  border-radius: 10px;
+  flex: 1;
+  margin-top: 10px;
+  padding: 20px 20px 10px;
+  box-shadow: 0 0 7px 2px #00000012;
+}
+
+.music-notes {
+  width: 300px;
+  position: absolute;
+  top: 3%;
+  left: 40%;
+}
+
+.music-notes.feature {
+  top: -20%;
+  left: 25%;
+}
+
+.music-notes.teachers {
+  z-index: 3;
+  width: 250px;
+  top: -9%;
+  left: 5%;
+}
+
+.music-notes.founder {
+  top: -10%;
+  left: 5%;
+}
+
+.music-notes.login {
+  top: -10%;
+}
+
+.music-notes.signup {
+  top: -5%;
+}
+
+.music-notes.teacher-profile {
+  inset: -47px 0% auto auto;
+}
+
+.cta-card {
+  background-image: url('../images/musicforlife-image-waveform.png'), url('../images/musicforlife-cta-card-bg.png');
+  background-position: 100%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: auto, cover;
+  border-radius: 40px;
+  justify-content: space-between;
+  width: 90%;
+  padding: 3% 5%;
+  display: flex;
+  position: relative;
+}
+
+.cta-card.center {
+  text-align: center;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cta-col {
+  width: 45%;
+}
+
+.cta-form {
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 5%;
+  display: flex;
+}
+
+.form {
+  display: flex;
+}
+
+.cta-form-block {
+  flex: 1;
+}
+
+.cta-email-div {
+  flex: 1;
+  margin-right: 10px;
+  display: flex;
+}
+
+.cta-email {
+  border-radius: 7px;
+  height: 50px;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+.cta-music-notes {
+  width: 400px;
+  position: absolute;
+  inset: -40px 20px auto auto;
+}
+
+.cta-music-notes.style2 {
+  right: auto;
+}
+
+.footer-logo {
+  width: 200px;
+}
+
+.card-university-content {
+  z-index: 2;
+  display: flex;
+  position: relative;
+}
+
+.card-university-fill {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(-2deg);
+}
+
+.card-university-fill:where(.w-variant-69e718b6-1959-f686-da70-2b04f2e0e257) {
+  transform: rotate(2deg);
+}
+
+.card-university-outline {
+  border: 2px dashed #ffa14a;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(1deg);
+}
+
+.card-university-outline:where(.w-variant-69e718b6-1959-f686-da70-2b04f2e0e257) {
+  transform: rotate(-1deg);
+}
+
+.h4 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.3em;
+}
+
+.row-feature {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-top: 5%;
+  padding-bottom: 7%;
+  display: flex;
+}
+
+.row-col-text {
+  width: 48%;
+}
+
+.feature-content {
+  padding-top: 5%;
+  padding-bottom: 0%;
+}
+
+.feature-content.margin-0 {
+  padding-top: 0%;
+}
+
+.row-col-image {
+  background-image: url('../images/musicforlife-iamge-wave-blue.png');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  width: 48%;
+  display: flex;
+}
+
+.row-col-image.no-bg {
+  background-image: none;
+}
+
+.card-feature-col {
+  width: 450px;
+  padding: 7%;
+  position: relative;
+}
+
+.card-feature-content {
+  z-index: 2;
+  position: relative;
+}
+
+.p-card {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.p-card.feature {
+  color: #70348f;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.p-card.feature:where(.w-variant-e7a932d8-f479-ef27-f2e7-5c34ad931cd4) {
+  color: var(--dark-slate-grey);
+  font-size: 1.4rem;
+}
+
+.card-feature-fill {
+  background-color: #fffbf8;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(2deg);
+}
+
+.card-feature-outline {
+  border: 2px dashed var(--link-color);
+  background-color: #fffbf8;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(-2deg);
+}
+
+.card-feature-outline:where(.w-variant-e7a932d8-f479-ef27-f2e7-5c34ad931cd4) {
+  transform: rotate(2deg);
+}
+
+.feature-content-row {
+  margin-left: 8%;
+}
+
+.card-teacher-photo-content {
+  z-index: 1;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-1deg);
+}
+
+.card-teacher-photo-outline {
+  border: 3px dashed var(--sandy-brown);
+  border-radius: 15px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(3deg);
+}
+
+.founder-photo-content {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-2deg);
+}
+
+.founder-photo-outline {
+  border: 2px dashed var(--sandy-brown);
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(2deg);
+}
+
+.card-testimonial-hd {
+  background-color: #ffecdb;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 5%;
+  font-size: 1rem;
+}
+
+.p-div {
+  margin-bottom: 20px;
+}
+
+.card-role-content {
+  z-index: 2;
+  padding: 10%;
+  position: relative;
+}
+
+.card-role-fill {
+  background-color: #fffbf8;
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(-2deg);
+}
+
+.card-role-fill:where(.w-variant-a40d0ba9-aa5b-1833-ce9f-3bcafe2b5a12) {
+  transform: rotate(2deg);
+}
+
+.card-role-outline {
+  border: 2px dashed var(--sandy-brown);
+  border-radius: 20px;
+  position: absolute;
+  inset: 0%;
+  transform: rotate(1deg);
+}
+
+.card-role-outline:where(.w-variant-a40d0ba9-aa5b-1833-ce9f-3bcafe2b5a12) {
+  border-color: var(--link-color);
+  transform: rotate(-1deg);
+}
+
+.card-role-outline:where(.w-variant-b99cb548-ca7e-5cd9-1d8a-828d608cd526) {
+  border-color: var(--dark-violet);
+  transform: rotate(1.5deg);
+}
+
+@media screen and (min-width: 1280px) {
+  .p.teacher-position {
+    color: var(--dark-violet);
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .h2-style2.teacher-name {
+    color: var(--link-color);
+    font-family: Byrd, Tahoma, sans-serif;
+    font-size: 2.4rem;
+  }
+
+  .h4.smaller {
+    text-align: left;
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  img {
+    width: 100%;
+  }
+
+  .h1.hero {
+    font-size: calc(100% + 4.8vw);
+  }
+
+  .hero-text {
+    border-top-left-radius: 70px;
+    border-top-right-radius: 70px;
+    width: 60%;
+  }
+
+  .p-hero {
+    font-size: 1.6rem;
+  }
+
+  .hero-section-style2 {
+    background-image: url('../images/musicforlife-hero-texture-curve.png'), url('../images/musicforlife-hero-texture-notes.svg');
+    background-size: cover, cover;
+  }
+
+  .hero-section-style3 {
+    background-size: 100%;
+  }
+
+  .p-cta {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .h1 {
+    margin-bottom: 20px;
+    font-size: 4.2rem;
+  }
+
+  .h1.hero {
+    font-size: 4.6vw;
+    line-height: 1.2em;
+  }
+
+  .navbar-margin {
+    width: 65vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .margin {
+    flex: 1;
+  }
+
+  .hero-content {
+    height: 100%;
+    padding-top: 20px;
+  }
+
+  .hero-content.style2 {
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+
+  .top-navbar {
+    width: 60%;
+  }
+
+  .top-nav-margin {
+    margin-right: 18vw;
+  }
+
+  .hero-text {
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    width: 50%;
+    font-size: calc(70% + .5rem);
+    right: 5%;
+  }
+
+  .p-hero {
+    font-size: 2rem;
+  }
+
+  .hero-slider-content {
+    margin-bottom: 60px;
+  }
+
+  .hero-slider {
+    flex: 0 auto;
+  }
+
+  .hero-testimonials {
+    background-image: url('../images/musicforlife-hero-texture-curve.png');
+    background-position: 50% -90%;
+    background-size: cover;
+  }
+
+  .testimonials-main-container {
+    padding-top: 60px;
+  }
+
+  .section-stats-content {
+    margin-bottom: 5vw;
+  }
+
+  .cta-section {
+    background-image: url('../images/Asset-42.png'), url('../images/musicforlife-cta-texture-notes.svg');
+    background-position: 50% 0, 0 0;
+    background-repeat: no-repeat, repeat;
+    background-size: contain, auto;
+  }
+
+  .hero-section-style2 {
+    background-image: url('../images/musicforlife-hero-texture-curve.png'), url('../images/musicforlife-hero-texture-notes.svg');
+    background-position: 50% 100%, 50%;
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, auto;
+    height: auto;
+  }
+
+  .hero-section-style2.location {
+    flex-direction: column;
+    height: auto;
+    display: flex;
+  }
+
+  .hero-notes {
+    width: 600px;
+    margin-top: -72px;
+  }
+
+  .slider-text-container {
+    margin-right: 5%;
+  }
+
+  .about-the-founder {
+    height: 100%;
+  }
+
+  .founders-name-div {
+    margin-bottom: 40px;
+  }
+
+  .hero-section-style3 {
+    background-position: 50% -20%;
+    height: auto;
+  }
+
+  .hero-section-login {
+    background-size: 100%;
+    height: auto;
+  }
+
+  .login-wrap, .teacher-card {
+    width: 30vw;
+  }
+
+  .teacher-section {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .p_large {
+    font-size: 1rem;
+    line-height: 1.2em;
+  }
+
+  .h2 {
+    font-size: 3rem;
+  }
+
+  .h2.blue.bigger {
+    text-align: center;
+    text-align: center;
+    font-size: 2.4rem;
+  }
+
+  .h2.dark {
+    font-size: 2.4rem;
+  }
+
+  .h2.hero.violet {
+    font-size: 3rem;
+  }
+
+  .h2.smaller.dark-violet {
+    font-size: 1.8rem;
+  }
+
+  .h1 {
+    font-size: 42px;
+  }
+
+  .h1.hero {
+    font-size: 4rem;
+    line-height: 1.2em;
+  }
+
+  .navbar-margin, .margin {
+    width: 95vw;
+  }
+
+  .hero-content.style2 {
+    padding-top: 5%;
+  }
+
+  .brand {
+    width: 200px;
+    margin-top: -20px;
+  }
+
+  .nav-link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .top-navbar {
+    width: 60%;
+    padding-left: 20px;
+  }
+
+  .top-nav-margin {
+    width: 95vw;
+  }
+
+  .nav-dropdown-toggle {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-weight: 500;
+  }
+
+  .nav-dropdownlist {
+    box-shadow: none;
+    background-color: #0000;
+    margin-left: 20px;
+    display: block;
+    position: static;
+  }
+
+  .nav-menu {
+    background-color: #fff;
+    border-bottom-left-radius: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40vw;
+    inset: 70px 0% auto auto;
+    box-shadow: 0 2px 5px #0003;
+  }
+
+  .hero-text {
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+  }
+
+  .p-hero {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .hero-slider-content {
+    flex-direction: column;
+    width: 95vw;
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .hero-slide-nav {
+    bottom: 0%;
+    left: 30%;
+    right: 30%;
+  }
+
+  .testimonials-card {
+    padding: 20px;
+  }
+
+  .section-card.wrap, .section-card._w-80 {
+    flex-wrap: wrap;
+  }
+
+  .card-features {
+    width: 45%;
+    margin-bottom: 40px;
+  }
+
+  .card-features.white, .card-features.white.home {
+    width: 48%;
+  }
+
+  .p.p_large.align-left {
+    font-size: 1.1rem;
+  }
+
+  .section-hd-div {
+    margin-bottom: 10px;
+  }
+
+  .section-hd-div._80 {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-stats-content {
+    width: 100%;
+  }
+
+  .card-stats {
+    text-align: center;
+    width: 48%;
+  }
+
+  .tab-container-div {
+    width: 100%;
+  }
+
+  .tab-link-div {
+    background-position: -35%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 10px 10px 20px;
+    display: flex;
+  }
+
+  .list-div {
+    width: auto;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+
+  .nav-dropdown-link {
+    color: #777;
+  }
+
+  .hero-section-style2, .hero-section-style2.location, .hero-section-style2.university {
+    height: auto;
+  }
+
+  .table-participating-locations {
+    font-size: .8rem;
+  }
+
+  .center-text {
+    width: auto;
+  }
+
+  .card-teacher {
+    flex-direction: column;
+  }
+
+  .card-teacher.align-start {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-teacher_photo {
+    width: 60%;
+  }
+
+  .card-teacher_content {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .slider-track {
+    padding-bottom: 25%;
+  }
+
+  .nav-dropdown-toggle-div {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+  }
+
+  .menu-button {
+    cursor: pointer;
+  }
+
+  .menu-button.w--open {
+    background-color: #b8d9f0;
+  }
+
+  .nav-dropdown-icon {
+    display: none;
+  }
+
+  .university-sticky-links-div {
+    width: 100%;
+  }
+
+  .university-sticky-links {
+    flex-flow: column;
+  }
+
+  .university-icons {
+    width: 40px;
+    height: 40px;
+  }
+
+  .university-text-link {
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 150.094px;
+    margin-top: 10px;
+    margin-left: 0;
+    padding: 10px;
+    line-height: 1.2em;
+    display: flex;
+  }
+
+  .card-university {
+    width: auto;
+  }
+
+  .card-university-div {
+    padding-top: 150px;
+  }
+
+  .center-text-div, .center-text-div._w-70, .university-links-div {
+    width: auto;
+  }
+
+  .card-additional-links {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .about-us-sublink {
+    background-position: -10% -10%;
+    background-size: 30px 30px;
+    width: 19%;
+    padding-left: 20px;
+  }
+
+  .about-us-main-container {
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .about-us-text-content {
+    order: -1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0%;
+  }
+
+  .contact-us-form {
+    width: 60%;
+  }
+
+  .content-row {
+    width: auto;
+  }
+
+  .teachers-sublink {
+    background-position: -15% -20%;
+    background-size: 50px;
+  }
+
+  .card-testimonials.enrichschool {
+    width: 100%;
+  }
+
+  .h2_style2 {
+    font-size: 1.8rem;
+  }
+
+  .testimonials-card-style2 {
+    padding: 50px 20px 20px;
+  }
+
+  .about-the-founder {
+    padding-top: 30px;
+  }
+
+  .founders-name-div {
+    margin-bottom: 20px;
+  }
+
+  .founder-photo, .founders-details {
+    width: 100%;
+  }
+
+  .hero-section-style3, .hero-section-login {
+    height: auto;
+  }
+
+  .login-wrap {
+    width: 60%;
+  }
+
+  .h2-style2 {
+    font-size: 1.8rem;
+  }
+
+  .teacher-card {
+    width: 80%;
+  }
+
+  .card-paragraph-col {
+    width: auto;
+  }
+
+  .card-role {
+    width: 45%;
+    margin-bottom: 40px;
+  }
+
+  .text-percentage {
+    margin-bottom: -10px;
+  }
+
+  .testimonials-hd {
+    flex-flow: column;
+  }
+
+  .testimonials-hd-text {
+    width: 100%;
+    margin-right: 0%;
+  }
+
+  .testimonials-image {
+    width: 100%;
+  }
+
+  .cta-card {
+    flex-flow: column;
+  }
+
+  .cta-col {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .row-feature {
+    flex-flow: column;
+  }
+
+  .row-col-text {
+    align-self: stretch;
+    width: auto;
+    margin-bottom: 5%;
+  }
+
+  .row-col-image.no-bg {
+    width: 70%;
+  }
+
+  .p-card.feature {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .form-block {
+    width: 90%;
+  }
+
+  .form-row.horizontal {
+    flex-direction: row;
+  }
+
+  .h2.testimonials {
+    font-size: 4.2rem;
+  }
+
+  .h2.hero.violet.small {
+    font-size: 2.8rem;
+  }
+
+  .h2.smaller.dark-violet {
+    font-size: 1.8rem;
+  }
+
+  .h1.hero {
+    text-align: center;
+    font-size: 58px;
+  }
+
+  .navbar-margin {
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-content {
+    padding-top: 20px;
+  }
+
+  .brand {
+    width: 150px;
+    margin-top: 0;
+  }
+
+  .brand.w--current {
+    margin-top: 0;
+  }
+
+  .top-navbar {
+    border-bottom-left-radius: 0;
+    width: 100%;
+  }
+
+  .nav-menu {
+    width: 50vw;
+  }
+
+  .p-hero {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .hero-slider-content {
+    padding-bottom: 20px;
+  }
+
+  .testimonials-main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonials-card {
+    margin-bottom: 20px;
+  }
+
+  .section-container {
+    padding-bottom: 0;
+  }
+
+  .section-hd-div.center._80 {
+    text-align: left;
+    justify-content: center;
+    align-items: flex-start;
+    width: auto;
+  }
+
+  .section-stats-content {
+    flex-flow: wrap;
+    justify-content: space-between;
+    padding-bottom: 15%;
+  }
+
+  .card-stats {
+    margin-bottom: 40px;
+  }
+
+  .tab-link-div {
+    background-position: -10%;
+    background-size: 100px;
+    flex: 0 auto;
+    height: 70px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .tab-menu-div {
+    flex-flow: column;
+  }
+
+  .cta-hd {
+    font-size: 3.2rem;
+  }
+
+  .hero-section-style2.university {
+    height: auto;
+  }
+
+  .hero-section-style2.about-us, .hero-section-style2.about-us-copy {
+    height: 50vw;
+  }
+
+  .table-participating-locations {
+    width: 539.594px;
+  }
+
+  .center-wrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .card-teacher, .card-teacher.align-start {
+    width: 100%;
+  }
+
+  .slider-track {
+    padding-top: 15%;
+  }
+
+  .table-container {
+    width: 100%;
+  }
+
+  .university-sticky-links-div {
+    flex-flow: wrap;
+  }
+
+  .university-sticky-links {
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  .university-text-link {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+
+  .university-features-div {
+    flex-flow: row;
+    width: auto;
+    margin-top: 0;
+    top: 10%;
+  }
+
+  .university-feature {
+    white-space: nowrap;
+    width: 18%;
+    min-width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: .8rem;
+  }
+
+  .card-university {
+    margin-top: 20px;
+  }
+
+  .card-university-image {
+    width: auto;
+    margin-bottom: 20px;
+  }
+
+  .card-university-text {
+    align-self: stretch;
+  }
+
+  .card-university-div {
+    padding-top: 160px;
+  }
+
+  .section-container-university {
+    padding-bottom: 0;
+  }
+
+  .university-links-div {
+    flex-flow: column;
+  }
+
+  .card-additional-links {
+    width: auto;
+    margin-bottom: 5%;
+    padding: 20px;
+  }
+
+  .contact-us-form {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .content-row {
+    flex-flow: column;
+    align-self: stretch;
+  }
+
+  .content-col {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .content-col-image {
+    order: -1;
+    width: 80%;
+  }
+
+  .sticky-teachers-sublink {
+    flex-flow: column;
+    width: 70%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .teachers-sublink {
+    background-position: -7%;
+    width: auto;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10%;
+  }
+
+  .slider-text-container {
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .slider-p-content {
+    width: auto;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .card-testimonials.musicbrain {
+    height: 300px;
+  }
+
+  .card-testimonials.enrichschool {
+    background-size: cover;
+    height: 300px;
+  }
+
+  .card-testimonials.musicmatter {
+    background-position: 50%;
+    background-size: cover;
+    height: 300px;
+  }
+
+  .card-testimonials-text-content.align-center.music-matters, .card-testimonials-text-content.align-center.enriching-schools, .card-testimonials-text-content.align-center.music-brains {
+    flex: 1;
+  }
+
+  .testimonials-card-style2 {
+    width: 80%;
+    margin-bottom: 40px;
+  }
+
+  .search-schools {
+    width: 100%;
+  }
+
+  .founder-left {
+    width: auto;
+  }
+
+  .about-the-founder {
+    flex-flow: column;
+    padding-top: 20px;
+  }
+
+  .founder-right {
+    margin-left: 0;
+  }
+
+  .career-form-wrap {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .login-wrap, .teacher-card {
+    width: 100%;
+  }
+
+  .teacher-section {
+    padding-top: 20px;
+  }
+
+  .p-cta {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .testimonials-image {
+    margin-bottom: 40px;
+  }
+
+  .button-div {
+    margin-top: 10px;
+  }
+
+  .cta-card {
+    border-radius: 20px;
+  }
+
+  .card-university-content, .row-feature {
+    flex-flow: column;
+  }
+
+  .row-col-text {
+    align-self: stretch;
+    width: auto;
+    margin-bottom: 10%;
+  }
+
+  .row-col-image {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .row-col-image.no-bg {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .form-row.horizontal {
+    flex-flow: row;
+  }
+
+  .p_large {
+    font-size: .9rem;
+  }
+
+  .h2 {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+
+  .h2.blue.bigger {
+    font-size: 2rem;
+  }
+
+  .h2.blue.bigger.mb-0 {
+    font-size: 1.6rem;
+  }
+
+  .h2.testimonials {
+    font-size: 2.4rem;
+  }
+
+  .h2.dark {
+    font-size: 1.8rem;
+  }
+
+  .h2.hero.violet {
+    font-size: 2.4rem;
+  }
+
+  .h2.hero.violet.small {
+    font-size: 2rem;
+  }
+
+  .h2.center.smaller, .h2.smaller {
+    font-size: 1.4rem;
+  }
+
+  .h2.smaller.dark-violet {
+    font-size: 1.2rem;
+    line-height: 1.4em;
+  }
+
+  .h1.hero {
+    font-size: 54px;
+    line-height: 1.3em;
+  }
+
+  .h1.hero.bold {
+    font-size: 2.6rem;
+    line-height: 1.2em;
+  }
+
+  .button {
+    white-space: nowrap;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navbar-margin {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-content.style2 {
+    height: auto;
+    padding-top: 10%;
+  }
+
+  .brand.w--current {
+    width: 120px;
+  }
+
+  .top-navbar {
+    justify-content: space-between;
+    padding-left: 10px;
+  }
+
+  .top-nav-margin {
+    justify-content: space-between;
+  }
+
+  .top-nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .top-nav-div {
+    white-space: pre;
+    margin-right: 0;
+    font-size: .6rem;
+  }
+
+  .top-nav-text {
+    font-size: .8rem;
+  }
+
+  .nav-menu {
+    width: 80vw;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .testimonials-card {
+    width: 250px;
+  }
+
+  .testimonials-card:where(.w-variant-6d939c24-3345-0c9c-8e32-50e7e6a4613d) {
+    left: -20px;
+  }
+
+  .card-features {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .card-features.white {
+    width: auto;
+  }
+
+  .card-features.white.home {
+    width: 100%;
+  }
+
+  .p, .p.p_large.align-left {
+    font-size: 1rem;
+  }
+
+  .section-container {
+    padding-top: 20px;
+  }
+
+  .section-hd-div.center {
+    padding-top: 10px;
+  }
+
+  .section-stats-content {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .card-stats {
+    width: auto;
+    margin-bottom: 60px;
+  }
+
+  .stats-icon {
+    margin-top: -30px;
+    margin-bottom: -20px;
+  }
+
+  .tab-link-div {
+    background-position: -30%;
+    flex: 0 auto;
+    height: 57.4375px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 50px;
+  }
+
+  .tab-menu-div {
+    flex-direction: column;
+  }
+
+  .card-white-content {
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .list-div {
+    width: auto;
+  }
+
+  .cta-hd {
+    font-size: 2rem;
+    line-height: 1.3em;
+  }
+
+  .footer-content {
+    flex-flow: column;
+  }
+
+  .hero-section-style2.location, .hero-section-style2.about-us {
+    height: auto;
+  }
+
+  .hero-section-style2.about-us {
+    height: 40vw;
+  }
+
+  .hero-section-style2.about-us-copy {
+    height: auto;
+  }
+
+  .h3 {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .h3.black.teachers-name {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+
+  .h3.dark-violet {
+    font-size: 1.4rem;
+  }
+
+  .center-text {
+    width: 100%;
+  }
+
+  .icon-small {
+    width: 20px;
+    height: 20px;
+  }
+
+  .center-wrapper {
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+
+  .card-teacher {
+    padding: 20px;
+  }
+
+  .card-teacher_photo {
+    width: 100%;
+  }
+
+  .slider-track {
+    padding-top: 50%;
+    padding-bottom: 50%;
+  }
+
+  .right-arrow, .left-arrow {
+    display: none;
+  }
+
+  .table-container {
+    overflow: auto;
+  }
+
+  .university-sticky-links-div {
+    flex-flow: wrap;
+  }
+
+  .university-sticky-links {
+    width: 45%;
+  }
+
+  .university-icons {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .university-text-link {
+    margin-left: 5px;
+    font-size: .8rem;
+  }
+
+  .university-feature {
+    font-size: .75rem;
+  }
+
+  .card-university {
+    flex-flow: column;
+  }
+
+  .card-university-image {
+    border-radius: 30px;
+    width: auto;
+    height: 260px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .card-university-text {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .card-text-list-item {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .section-container-university {
+    padding-top: 20px;
+  }
+
+  .university-links-div {
+    flex-flow: column;
+  }
+
+  .card-additional-links {
+    width: auto;
+    margin-bottom: 20px;
+  }
+
+  .about-us-sublink-div {
+    flex-flow: wrap;
+  }
+
+  .about-us-sublink {
+    background-position: 5%;
+    background-size: 20px 20px;
+    flex: 0 auto;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 60px;
+  }
+
+  .content-row {
+    flex-flow: column;
+  }
+
+  .content-col {
+    width: auto;
+  }
+
+  .content-col-image {
+    order: -1;
+    width: auto;
+  }
+
+  .sticky-teachers-sublink {
+    width: auto;
+  }
+
+  .teachers-sublink {
+    background-position: -12%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .text-teachers-name {
+    font-size: .9rem;
+  }
+
+  .teachers-position {
+    font-size: .8rem;
+  }
+
+  .teachers-position.bigger {
+    font-size: 1.2rem;
+  }
+
+  .card-teacher-trigger {
+    margin-top: 60px;
+  }
+
+  .slider-p-content {
+    width: auto;
+    margin-right: 0;
+  }
+
+  .topnav-left {
+    font-size: .8rem;
+  }
+
+  .hero-slider2 {
+    background-position: 30%;
+  }
+
+  .card-testimonials.musicbrain {
+    background-size: cover;
+  }
+
+  .card-testimonials.enrichschool {
+    background-position: 50%;
+    height: 400px;
+  }
+
+  .h2_style2 {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .testimonials-slider {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .testimonials-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .founder-left {
+    align-self: center;
+    width: auto;
+  }
+
+  .h3-style2 {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .founders-name-div {
+    flex-flow: column;
+  }
+
+  .founder-photo {
+    width: 80%;
+  }
+
+  .job-groupheading {
+    flex-flow: column;
+    align-items: stretch;
+  }
+
+  .h2-section-hd-text {
+    font-size: 1.5rem;
+  }
+
+  .job-role-div {
+    width: 100%;
+  }
+
+  .job-hd-text-contain.mobile-hide {
+    display: none;
+  }
+
+  .teacher-card-top {
+    text-align: center;
+    flex-flow: column;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .h2-style2 {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .teacher-card-details {
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+
+  .teacher-card-body {
+    text-align: center;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+  }
+
+  .tab-link-text {
+    align-self: stretch;
+  }
+
+  .card-paragraph {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card-role {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .text-percentage {
+    margin-bottom: 0;
+  }
+
+  .testimonials-hd-text {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .icon-testimonials {
+    width: 50px;
+    height: 50px;
+  }
+
+  .music-notes {
+    width: 170px;
+    top: 10%;
+    left: 30%;
+  }
+
+  .form {
+    flex-flow: column;
+  }
+
+  .cta-email-div {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .cta-email {
+    text-align: center;
+  }
+
+  .cta-music-notes {
+    width: 200px;
+    top: -20px;
+  }
+
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+
+  .h4 {
+    font-size: 1.3rem;
+  }
+
+  .feature-content-row {
+    margin-left: 0%;
+  }
+}
+
+
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-Light-08.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-Medium-11.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-UltraLight-06.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-Bold-02.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-01.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-Thin-13.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('../fonts/HelveticaNeue-Italic-03.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Byrd';
+  src: url('../fonts/Byrd-Bold.ttf') format('truetype'), url('../fonts/Byrd-ExtraBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Byrd';
+  src: url('../fonts/Byrd-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

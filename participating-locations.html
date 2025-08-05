@@ -1,0 +1,1479 @@
+<!DOCTYPE html><!--  Last Published: Mon Aug 04 2025 15:36:17 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="67780cdfbaa525456d38a9e2" data-wf-site="67780cdfbaa525456d38a999">
+<head>
+  <meta charset="utf-8">
+  <title>Participating Locations</title>
+  <meta content="Participating Locations" property="og:title">
+  <meta content="Participating Locations" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/components.css" rel="stylesheet" type="text/css">
+  <link href="css/v3-musicforlife-site.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:100,200,300,regular,500,600,700,800,900","Rubik:regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <style>
+        #map {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+        }
+        #suggestions {
+            border: 1px solid #ccc;
+            background: #fff;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            display: none;
+        }
+        #suggestions div {
+            padding: 5px;
+            cursor: pointer;
+        }
+        #suggestions div:hover {
+            background-color: #f2f8fa;
+        }
+    </style>
+</head>
+<body>
+  <div class="page">
+    <div tmq="top-bar" class="nav-div">
+      <div class="static-navbar div-block-76" data-ix="navbar">
+        <div class="top-navbar">
+          <div class="top-nav-margin">
+            <div class="top-nav-div">
+              <div class="topnav-left">
+                <div class="top-nav-icon"><img src="images/musicforlife-email-us.svg" loading="lazy" alt=""></div>
+                <a href="mailto:info@musicforlifekids.com" class="top-nav-text">info@musicforlifekids.com</a>
+              </div>
+              <div class="topnav-right">
+                <div class="top-nav-icon"><img src="images/musicforlife-call-us.svg" loading="lazy" alt=""></div>
+                <a href="tel:202-738-5433" class="top-nav-text">202-738-5433</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar static w-nav">
+          <div class="navbar-margin">
+            <a href="index.html" class="brand w-nav-brand"><img src="images/musicforlife-logo.jpeg" loading="lazy" alt=""></a>
+            <div class="nav-right">
+              <nav role="navigation" class="nav-menu w-nav-menu">
+                <a href="index.html" class="nav-link w-nav-link">Home</a>
+                <a href="participating-locations.html" aria-current="page" class="nav-link w-nav-link w--current">Participating Locations</a>
+                <a href="musicforlife-university.html" class="nav-link w-nav-link">MusicForLife University</a>
+                <div data-hover="true" data-delay="0" class="nav-dropdown-toggle-div w-dropdown">
+                  <div class="nav-dropdown-toggle w-dropdown-toggle">
+                    <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                    <a href="about-us.html" class="nav-dropdown-toggle">About Us</a>
+                  </div>
+                  <nav class="nav-dropdownlist w-dropdown-list">
+                    <a href="about-us/science-behind-the-music.html" class="nav-dropdown-link w-dropdown-link">Science Behind Music for Kids</a>
+                    <a href="about-us/mission-and-vision.html" class="nav-dropdown-link w-dropdown-link">Mission and Vision</a>
+                    <a href="about-us/our-culture.html" class="nav-dropdown-link w-dropdown-link">Culture</a>
+                    <a href="about-us/terrific-team-of-teachers.html" class="nav-dropdown-link w-dropdown-link">Terrific Team of Teachers</a>
+                    <a href="about-us/about-the-founder.html" class="nav-dropdown-link w-dropdown-link">About the Founder</a>
+                  </nav>
+                </div>
+                <a href="careers.html" class="nav-link w-nav-link">Careers</a>
+                <div data-hover="true" data-delay="0" class="nav-dropdown-toggle-div w-dropdown">
+                  <div class="nav-dropdown-toggle w-dropdown-toggle">
+                    <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                    <a href="#" class="nav-dropdown-toggle">Accounts</a>
+                  </div>
+                  <nav class="nav-dropdownlist w-dropdown-list">
+                    <a href="log-in.html" class="nav-dropdown-link w-dropdown-link">Log In</a>
+                    <a href="sign-up.html" class="nav-dropdown-link w-dropdown-link">Sign Up</a>
+                  </nav>
+                </div>
+              </nav>
+              <div class="nav-search">
+                <div data-w-id="96b8417c-1ec0-0171-d838-7f85f6178c19" class="nav-search-icon"><img src="images/musicforlife-topnav-search.svg" loading="lazy" alt=""></div>
+                <div class="nav-search-popup">
+                  <form action="/search" class="w-form"><input class="nav-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""><input type="submit" class="search-button-hide w-button" value="Search"></form>
+                </div>
+              </div>
+              <div class="menu-button w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-navbar">
+        <div class="top-navbar">
+          <div class="top-nav-margin">
+            <div class="top-nav-div">
+              <div class="topnav-left">
+                <div class="top-nav-icon"><img src="images/musicforlife-email-us.svg" loading="lazy" alt=""></div>
+                <a href="mailto:info@musicforlifekids.com" class="top-nav-text">info@musicforlifekids.com</a>
+              </div>
+              <div class="topnav-right">
+                <div class="top-nav-icon"><img src="images/musicforlife-call-us.svg" loading="lazy" alt=""></div>
+                <a href="tel:202-738-5433" class="top-nav-text">202-738-5433</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar floating w-nav">
+          <div class="navbar-margin">
+            <a href="index.html" class="brand w-nav-brand"><img src="images/musicforlife-logo.jpeg" loading="lazy" alt=""></a>
+            <div class="nav-right">
+              <nav role="navigation" class="nav-menu w-nav-menu">
+                <a href="index.html" class="nav-link w-nav-link">Home</a>
+                <a href="participating-locations.html" aria-current="page" class="nav-link w-nav-link w--current">Participating Locations</a>
+                <a href="musicforlife-university.html" class="nav-link w-nav-link">MusicForLife University</a>
+                <div data-hover="true" data-delay="0" class="nav-dropdown-toggle-div w-dropdown">
+                  <div class="nav-dropdown-toggle w-dropdown-toggle">
+                    <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                    <a href="about-us.html" class="nav-dropdown-toggle">About Us</a>
+                  </div>
+                  <nav class="nav-dropdownlist w-dropdown-list">
+                    <a href="about-us/science-behind-the-music.html" class="nav-dropdown-link w-dropdown-link">Science Behind Music for Kids</a>
+                    <a href="about-us/mission-and-vision.html" class="nav-dropdown-link w-dropdown-link">Mission and Vision</a>
+                    <a href="about-us/our-culture.html" class="nav-dropdown-link w-dropdown-link">Culture</a>
+                    <a href="about-us/terrific-team-of-teachers.html" class="nav-dropdown-link w-dropdown-link">Terrific Team of Teachers</a>
+                    <a href="about-us/about-the-founder.html" class="nav-dropdown-link w-dropdown-link">About the Founder</a>
+                  </nav>
+                </div>
+                <a href="careers.html" class="nav-link w-nav-link">Careers</a>
+                <div data-hover="true" data-delay="0" class="nav-dropdown-toggle-div w-dropdown">
+                  <div class="nav-dropdown-toggle w-dropdown-toggle">
+                    <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                    <a href="#" class="nav-dropdown-toggle">Accounts</a>
+                  </div>
+                  <nav class="nav-dropdownlist w-dropdown-list">
+                    <a href="log-in.html" class="nav-dropdown-link w-dropdown-link">Log In</a>
+                    <a href="sign-up.html" class="nav-dropdown-link w-dropdown-link">Sign Up</a>
+                  </nav>
+                </div>
+              </nav>
+              <div class="nav-search">
+                <div data-w-id="491f5c80-cca5-130c-e9bb-050fc6f1a747" class="nav-search-icon"><img src="images/musicforlife-topnav-search.svg" loading="lazy" alt=""></div>
+                <div class="nav-search-popup">
+                  <form action="/search" class="w-form"><input class="nav-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""><input type="submit" class="search-button-hide w-button" value="Search"></form>
+                </div>
+              </div>
+              <div class="menu-button w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="hero-section-style2 location">
+        <div class="margin">
+          <div class="hero-content style2 locations">
+            <h1 class="h2 hero violet">Participating Locations</h1>
+            <p class="p-hero semibold dark">Locate Your School</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="margin">
+          <div class="section-container">
+            <div class="participating-locations">
+              <div tmq="cmp-musicforlife-schoolsmap-wrap" class="map-container">
+                <div id="map" tmq="cmp-musicforlife-schoolsmap" class="map-wrap"></div>
+              </div>
+              <div class="location-hd-div">
+                <h3 class="h2 dark">Explore and Sign up</h3>
+                <div tmq="cmp-musicforlife-searchschools" class="search-schools">
+                  <div class="search-formblock w-form">
+                    <form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="67780cdfbaa525456d38a9e2" data-wf-element-id="43244e0d-4dfb-860d-fa3b-7672f01940d8">
+                      <div tmq="cmp-musicforlife-searchschools-div" class="search-school"><input class="search-school-input w-input" maxlength="256" name="name" data-name="Name" placeholder="Enter School Name" type="text" id="search-school">
+                        <div id="suggestions" class="suggestions">
+                          <div>This is some text inside of a div block.</div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-container">
+                <div class="table-participating-locations">
+                  <div class="table-hd">
+                    <div class="table-col _30">
+                      <div>School&#x27;s Name</div>
+                    </div>
+                    <div class="table-col">
+                      <div>Location</div>
+                    </div>
+                    <div class="table-col">
+                      <div>State</div>
+                    </div>
+                    <div class="table-col">
+                      <div>Schedule</div>
+                    </div>
+                    <div class="table-col _15">
+                      <div>Teacher</div>
+                    </div>
+                  </div>
+                  <div class="table-content">
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Advent Child Development Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Forest Hill</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/marjorie-phillips.html">Ms. Marjorie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>A Family Affair</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Parkville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/calvin-mccormack.html">Mr. Calvin</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Bright Beginnings</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Owings</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Bright Horizon at Tide Point</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Baltimore</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mrs. Heather</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Center for Creative Children</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Annapolis Junction</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/marjorie-phillips.html">Ms. Marjorie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Chesapeake City LC</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Chesapeake City</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/jamie-cochran.html">Mrs. Jamie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Childtime</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Ellicott City</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/javon-joseph-morris-byam.html">Mr. Javon</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Childtime</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Reston</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children of America</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Gambrills</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/joseph-evans.html">Mr. Joseph</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children of America</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Ellicott City</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/jamie-cochran.html">Mr. Javon</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children of America</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Stafford</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/keila-figueroa-diaz.html">Ms. Keila</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children of America</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Waldorf</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Baltimore</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/leah-finklea.html">Ms. Leah</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Bel Air</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/calvin-mccormack.html">Mr. Calvin</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Columbia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/javon-joseph-morris-byam.html">Mr. Javon</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Ellicott City</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/wade-ingram.html">Mr. Wade</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Forest Hill</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/calvin-mccormack.html">Mr. Calvin</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Germantown</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/joseph-evans.html">Mr. Joseph</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Children’s Manor Montessori School</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Rockville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/wade-ingram.html">Mr. Wade</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Creative World</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tampa</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Florida</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ceciley-phillips.html">Mrs. Ceciley</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Dawn&#x27;s Early Light Dunkirk</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Dunkirk</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/marjorie-phillips.html">Ms. Marjorie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Dawn&#x27;s Early Light Prince Frederick</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Prince Frederick</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Prince Frederick</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/marjorie-phillips.html">Ms. Marjorie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Destined 4 Greatness LC</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Essex</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/marjorie-phillips.html">Ms. Marjorie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Discovery Time Learning Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Alexandria</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/mary-rafferty.html">Mrs. Mary</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>FAZ Creative Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>McLean</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/victoria-stackhouse.html">Ms. Victoria</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Footprints to Success LC</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Odenton</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/rachel-stelfox.html">Ms. Rachel</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Great Beginnings</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Alexandria</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/david-nenner.html">Mr. David</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Greenbelt Children&#x27;s Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Greenbelt</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/javon-joseph-morris-byam.html">Mr. Javon</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Hilltop Childcare Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Clarksville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/javon-joseph-morris-byam.html">Mr. Javon</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Iman Learning Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Germantown</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/wade-ingram.html">Mr. Wade</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Jelly Beans</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Hughesville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <div>To Be Defined</div>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Jelly Beans</div>
+                      </div>
+                      <div class="table-col">
+                        <div>La Plata</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <div>To Be Defined</div>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Jelly Beans</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Waldorf</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <div>To Be Defined</div>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Kiddie Academy of Elkton</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Elkton</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/jamie-cochran.html">Mrs. Jamie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Kindred Learning Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Baltimore</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ivey-church.html">Ms. Ivey</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Kids in His Care</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Beltsville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>La Garderie</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Bel Air</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/calvin-mccormack.html">Mr. Calvin</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>La Petite Academy</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Brandenton</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Florida</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ceciley-phillips.html">Mrs. Ceciley</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>La Petite Academy</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Brandon</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Florida</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ceciley-phillips.html">Mrs. Ceciley</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>La Petite Academy</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Sterling</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>La Petite Academy</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Towson</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/heather-keller.html">Mrs. Heather</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>La Petite Academy</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Valrico</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Florida</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ceciley-phillips.html">Mrs. Ceciley</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Largo Park ELC</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Largo</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/rachel-stelfox.html">Ms. Rachel</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Learning Tree</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Annapolis</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Little Darlings Childcare Learning Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Catonsville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ivey-church.html">Ms. Ivey</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Little People</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Germantown</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/wade-ingram.html">Mr. Wade</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Little Smiling Faces</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Bowie</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Evenings (5:30-6:00pm)</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/david-nenner.html">Mr. David</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Little Smiling Faces</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Upper Marlboro</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Evenings (5:30-6:00pm)</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/joseph-evans.html">Mr. Joseph</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Little Queens and Kings CCC</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Severn</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <div>To Be Defined</div>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Love of Learning</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Columbia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/leah-finklea.html">Ms. Leah</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Magic Moments</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Towson</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/calvin-mccormack.html">Mr. Calvin</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Mighty Minds</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Hyattsville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/kelsey-brandt.html">Mrs. Kelsey</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Minnieland Academy at Dominion Valley</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Haymarket</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/david-nenner.html">Mr. David</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Minnieland Academy at Heathcote</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Haymarket</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Minnieland Academy at Sully Station</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Centreville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/david-nenner.html">Mr. David</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Minnieland Academy at Wellington</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Manassas</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Friday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/ikendra-woolen.html">Ms. IKendra</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Montessori School of Chantilly</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Chantilly</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Afternoons (2:30-3:00pm)</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Ms. Bevs</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Dunkirk</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>My Little Magic Garden</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Jessup</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Thursday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/javon-joseph-morris-byam.html">Mr. Javon</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Preston Fun-Da-Mentals</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Preston</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Tuesday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/jamie-cochran.html">Mrs. Jamie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Severna Park Children&#x27;s Center</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Pasadena</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <div>To Be Defined</div>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>Springfield Academy</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Springfield</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Wednesday Afternoons</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/wade-ingram.html">Mr. Wade</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>The Miracle CDC</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Capitol Heights</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <div>To Be Defined</div>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>The Preschool at Riva Trace</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Davidsonville</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Maryland</div>
+                      </div>
+                      <div class="table-col">
+                        <div>To Be Defined</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/marjorie-phillips.html">Ms. Marjorie</a>
+                      </div>
+                    </div>
+                    <div class="table-row">
+                      <div class="table-col _30">
+                        <div>YWCA</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Vienna</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Virginia</div>
+                      </div>
+                      <div class="table-col">
+                        <div>Monday Mornings</div>
+                      </div>
+                      <div class="table-col _15">
+                        <a href="teachers/anthony-thompson-shaw.html">Mr. Anthony</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-results">
+                <div>Showing 1 to 65 of 65 entries</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div tmq="footer" class="footer-section">
+      <div class="margin">
+        <div class="footer-content">
+          <div class="footer-logo"><img src="images/musicforlife-logo.jpeg" loading="lazy" alt=""></div>
+          <div>
+            <a href="https://www.facebook.com/txtmeQuick" class="footer-icon w-inline-block"><img src="images/musicforlife-footer-fb.svg" loading="lazy" alt=""></a>
+            <a href="https://twitter.com/txtmequick_" class="footer-icon w-inline-block"><img src="images/musicforlife-footer-twitter.svg" loading="lazy" alt=""></a>
+            <a href="https://musicforlifekids.com/about/#" class="footer-icon w-inline-block"><img src="images/musicforlife-footer-googleplus.svg" loading="lazy" alt=""></a>
+            <a href="https://musicforlifekids.com/comments/feed/" class="footer-icon w-inline-block"><img src="images/musicforlife-footer-rss.svg" loading="lazy" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=67780cdfbaa525456d38a999" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/v3-musicforlife-site.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+        // Initialize the map
+        const map = L.map('map').setView([37.8, -96.9], 4.4); // Coordinates for USA center
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        // Define schools and their corresponding locations
+        const schools = {
+            "A Family Affair": {
+                coords: [39.4053403268503, -76.52497970518432],
+                popup: '<b>A Family Affair</b><br>Parkville'
+            },
+            "Bright Beginnings": {
+                coords: [38.713479544848916, -76.60629161643216],
+                popup: '<b>Bright Beginnings</b><br>Owings'
+            },
+            "Bright Horizons at Tide Point": {
+                coords: [39.292409581274214, -76.59425549015128],
+                popup: '<b>Bright Horizons at Tide Point</b><br>Baltimore'
+            },
+            "Center for Creative Children": {
+                coords: [39.122746443205436, -76.77926914573429],
+                popup: '<b>Center for Creative Children</b><br>Annapolis Junction'
+            },
+            "Childtime of Ellicot City": {
+                coords: [39.23736610114705, -76.79786587593593],
+                popup: '<b>Childtime</b><br>Ellicot City'
+            },
+            "Childtime of Reston": {
+                coords: [38.95180163001775, -77.34650867409543],
+                popup: '<b>Childtime</b><br>Reston'
+            },
+            "Children of America Ellicot": {
+                coords: [39.25207866874938, -76.79057410477132],
+                popup: '<b>Children of America</b><br>Ellicot City'
+            },
+            "Children of America Stafford": {
+                coords: [38.47727207925606, -77.42185310356894],
+                popup: '<b>Children of America</b><br>Stafford'
+            },
+            "California Ranch School": {
+                coords: [33.94182175159212, -117.20491142610872],
+                popup: '<b>California Ranch School</b><br>California'
+            },
+            "California International School": {
+                coords: [38.805375122461875, -121.27043884526483],
+                popup: '<b>California International School</b><br>California'
+            },
+            "Bethany School": {
+                coords: [39.26465759051691, -84.45467480106964],
+                popup: '<b>Bethany School</b><br>Cincinnati'
+            },
+            "Mother Brunner Catholic School": {
+                coords: [39.8169021912706, -84.27302780507846],
+                popup: '<b>Mother Brunner Catholic School</b><br>Trotwood'
+            },
+            "Creative World School - Tampa Palms": {
+                coords: [28.135322906469312, -82.38047581879752],
+                popup: '<b>Creative World School - Tampa Palms</b><br>Florida'
+            },
+            "La Petite Academy - Brandenton": {
+                coords: [27.448295146274344, -82.472321273185],
+                popup: '<b>La Petite Academy - Brandenton</b><br>Florida'
+            },
+            "La Petite Academy of Valrico": {
+                coords: [27.884768224988616, -82.26699226541238],
+                popup: '<b>La Petite Academy of Valrico</b><br>Florida'
+            }
+        };
+        // Add markers and collect their coordinates
+        const markers = {};
+        const bounds = [];
+        for (const [schoolName, schoolInfo] of Object.entries(schools)) {
+            const marker = L.marker(schoolInfo.coords).addTo(map)
+                .bindPopup(schoolInfo.popup);
+            markers[schoolName.toLowerCase()] = marker; // Use lowercase for case-insensitive search
+            bounds.push(schoolInfo.coords);
+        }
+        // Fit the map to the bounds of all markers
+        //map.fitBounds(bounds);
+        // Search and Autocomplete Functionality
+        const searchField = document.getElementById('search-school');
+        const suggestionsContainer = document.getElementById('suggestions');
+        searchField.addEventListener('input', () => {
+            const query = searchField.value.trim().toLowerCase();
+            suggestionsContainer.innerHTML = '';
+            suggestionsContainer.style.display = 'none';
+            if (query) {
+                const suggestions = Object.keys(schools).filter(school =>
+                    school.toLowerCase().includes(query)
+                );
+                if (suggestions.length > 0) {
+                    suggestions.forEach(school => {
+                        const suggestionDiv = document.createElement('div');
+                        suggestionDiv.textContent = school;
+                        suggestionDiv.addEventListener('click', () => {
+                            searchField.value = school;
+                            suggestionsContainer.style.display = 'none';
+                            goToSchool(school);
+                        });
+                        suggestionsContainer.appendChild(suggestionDiv);
+                    });
+                    suggestionsContainer.style.display = 'block';
+                }
+            }
+        });
+        // Search function to navigate to a school
+        function goToSchool(schoolName) {
+            const schoolInfo = schools[schoolName];
+            if (schoolInfo) {
+                const marker = markers[schoolName.toLowerCase()];
+                map.setView(marker.getLatLng(), 13);
+                marker.openPopup();
+            } else {
+                alert('School not found.');
+            }
+        }
+    </script>
+</body>
+</html>

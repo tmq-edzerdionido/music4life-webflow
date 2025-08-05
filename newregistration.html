@@ -1,0 +1,273 @@
+<p><script src="//checkout.stripe.com/checkout.js"></script><br /><script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.js"></script><br /><script>IS_ADMIN = false;</script></p>
+<div class="container" style="margin-left: -15px;">
+<div><img style="width: 600px; margin-top: -100px; display: block; margin-bottom: 150px;" src="https://musicforlifekids.com/wp-content/uploads/2017/01/MFL-logo-transparent.png" alt="" />
+<p style="position: absolute; margin-top: -143px; width: auto; font-size: 17px;">Give your little bundles of joy a lifetime of brighter days by signing up for our fun and interactive weekly music classes!</p>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div><form class="form-inline form1">
+<div class="form-group" style="margin-top: 30px;"><label class="state0" for="state">State/Location: </label><br /><select id="state" class="form-control state0">
+<option value="0">--SELECT STATE--</option>
+</select></div>
+<div class="table-responsive schoolSelected">
+<table class="table" style="border: 0;">
+<thead>
+<tr>
+<th> </th>
+<th> </th>
+<th> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> </td>
+<td style="max-width: initial;">Programs Available @ –</td>
+<td id="sName" style="max-width: initial;">Advent CDC -</td>
+<td id="sAddress" style="max-width: initial;">2230 Rock Spring Rd. Forest Hill, MD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</form></div>
+</div>
+<div class="panel panel-info col-xs-5 state0 state0-panel">
+<div class="panel-body">Choose the State where your Little Musician attends school to see a list of schools which currently offer Music for Life!</div>
+</div>
+<div class="panel panel-info col-xs-5 program0 program0-panel" style="position: absolute; margin-top: -80px; margin-left: 0px; display: block; width: auto;">
+<div class="panel-body">Below you will find classes currently being offered at your center! Choose your program based on the age of your little musician first.<br />Then, you will be propted on the next screen to select your subscription plan amount (monthly, semi-yearly or yearly). Subscription plans and frequencies are based<br />on location and may not be available at all locations. You can cancel your subscription anytime with 24 hour notice, and be prorated for any prorated unused amount within 30-60 days.</div>
+</div>
+<div class="panel panel-info col-xs-5 panelInfo1 panelInfo1-panel" style="margin-left: 410px; font-size: 13px;">
+<div class="panel-body">Find more details about programs being offered at your school by clicking on the ‘Choose Your School’ button below.</div>
+</div>
+<div class="panel panel-info col-xs-5 forMobile-school">
+<div class="panel-body" style="color: #c6464f;">You are using mobile, click on the <i class="fa fa-arrow-down" aria-hidden="true"></i> icon to see details</div>
+</div>
+</div>
+<div id="school-alert" style="margin-top: 10px;"> </div>
+<div class="table-responsive schoolTable">
+<table id="schoolTable" class="table table-hover">
+<thead>
+<tr>
+<th>School Name</th>
+<th class="mobileMode">School Address</th>
+<th class="mobileMode">Select</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+</div>
+<div class="table-responsive programTable">
+<table class="table table-hover mytable">
+<thead>
+<tr>
+<th>Program</th>
+<th class="mobileMode">Age Group</th>
+<th class="mobileMode">Program Cost</th>
+<th class="mobileMode">Duration Of Classes</th>
+<th class="mobileMode" style="width: 200px;">Description of Classes</th>
+<th class="mobileMode"> </th>
+</tr>
+</thead>
+<tbody id="programBody"></tbody>
+</table>
+</div>
+</div>
+<p><!-- Modal --></p>
+<div id="myModal" class="modal fade" style="margin-top: 20px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-responsive"><!--
+
+
+<div class="modal-dialog " style="width: 1400px;">-->
+<div class="modal-content">
+  <div class="modal-header d-flex justify-content-between align-items-center">
+    <h4 id="myModalLabel" class="modal-title">Payment Frequency for</h4>
+    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <div id="modal-alert" class="text-center mb-3"></div>
+    <div id="modalFormData">
+      <div class="table-responsive mb-4">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Program</th>
+              <th class="mobileMode">Age Group</th>
+              <th class="mobileMode">Program Cost</th>
+              <th class="mobileMode">Duration</th>
+              <th class="mobileMode">Description</th>
+            </tr>
+          </thead>
+          <tbody id="modalTBody"></tbody>
+        </table>
+      </div>
+      <div class="row g-3 mb-4">
+        <div class="col-12">
+          <div class="card-group text-center">
+            <div class="card border-0">
+              <div class="card-header bg-light">
+                <span class="fw-bold">Payment Frequency</span>
+              </div>
+              <div class="card-body">
+                <p class="mb-1">Select your plan</p>
+                <p class="text-muted small">You can sign up for Monthly, Semi-Yearly, and Yearly</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Discount</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card border-info">
+              <div class="card-header bg-info text-white">Monthly</div>
+              <div class="card-body">
+                <div class="display-6 mb-2"><span class="pricely-currency">$</span><span class="monthlyPrice">103.50</span></div>
+                <p class="small">Cost for Program</p>
+                <a class="btn btn-info signUPM signUP w-100" href="#" data-cmd="month" data-price="0">Choose Monthly</a>
+                <ul class="list-group list-group-flush mt-2">
+                  <li class="list-group-item"><span class="feature-hide monthlyDiscount">0%</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card border-warning">
+              <div class="card-header bg-warning text-dark">Semi-Yearly</div>
+              <div class="card-body">
+                <div class="display-6 mb-2"><span class="pricely-currency">$</span><span class="hYearPrice">558.90</span></div>
+                <p class="small">Cost for Program</p>
+                <a class="btn btn-warning signUPHY signUP w-100" href="#" data-cmd="hyear" data-price="0">Choose Semi-Yearly</a>
+                <ul class="list-group list-group-flush mt-2">
+                  <li class="list-group-item"><span class="feature-hide halfYearDiscount">0%</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card border-success">
+              <div class="card-header bg-success text-white">Annual</div>
+              <div class="card-body">
+                <div class="display-6 mb-2"><span class="pricely-currency">$</span><span class="yearPrice">1117.80</span></div>
+                <p class="small">Cost for Program</p>
+                <a class="btn btn-success signUPY signUP w-100" href="#" data-cmd="year" data-price="0">Choose Annual</a>
+                <ul class="list-group list-group-flush mt-2">
+                  <li class="list-group-item"><span class="feature-hide yearlyDiscount">10% (applied to the price already)</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--          Parent Child Form              -->
+      <form id="pcForm" class="needs-validation" novalidate action="">
+        <div class="mb-3">
+          <label class="form-label fw-bold">Selected Payment:</label>
+          <div id="selectedLabel" class="mb-2"></div>
+          <!--Choose Recurring Day <span style="font-size: 10px;display: block;">(Leave to Start Recurring Immediately):</span>
+          <input type="date" id="recurringDate" style="margin-top: -20px;" class="form-control" placeholder=""> -->
+        </div>
+        <!--                            Parent Info -->
+        <hr />
+        <h5 class="fw-bold mt-4">Your Information</h5>
+        <div class="row g-3 mb-3">
+          <div class="col-md-4">
+            <label for="pFName" class="form-label">* First name</label>
+            <input id="pFName" class="form-control" required type="text" placeholder="Enter first name ..." />
+          </div>
+          <div class="col-md-4">
+            <label for="pLName" class="form-label">* Last name</label>
+            <input id="pLName" class="form-control" required type="text" placeholder="Last name ..." />
+          </div>
+          <div class="col-md-4">
+            <label for="pEmail" class="form-label">* Email Address</label>
+            <input id="pEmail" class="form-control" required type="email" placeholder="Email Address" />
+          </div>
+        </div>
+        <!--                            Child Info-->
+        <hr />
+        <h5 class="fw-bold mt-4">Your Child’s Information</h5>
+        <div class="row g-3 mb-3">
+          <div class="col-md-3">
+            <label for="cFName" class="form-label">* First name</label>
+            <input id="cFName" class="form-control" required type="text" placeholder="Enter first name ..." />
+          </div>
+          <div class="col-md-3">
+            <label for="cLName" class="form-label">* Last name</label>
+            <input id="cLName" class="form-control" required type="text" placeholder="Last name ..." />
+          </div>
+          <div class="col-md-3">
+            <label for="bday" class="form-label">* Birthday</label>
+            <input id="bday" class="form-control" required type="date" />
+          </div>
+          <div class="col-md-3 privateLesson">
+            <label for="availability" class="form-label">* Availability</label>
+            <input id="availability" class="form-control" type="text" placeholder="Monday - Sunday ..." />
+          </div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-4">
+            <label for="cpNumber" class="form-label">* Cellphone Number</label>
+            <input id="cpNumber" class="form-control" required type="text" placeholder="Phone Number" />
+          </div>
+          <!--
+          <div class="col-xs-3 privateLesson"><label class="make-smaller">* Address : </label>
+          <input id="address" class="form-control" type="text" placeholder="Address"></div>
+          <div class="col-xs-5 privateLesson"><label class="make-smaller">* Name of Preferred Teacher (Optional and based on availability) : </label>
+          <input id="preferredTeacher" class="form-control" type="text" placeholder="Teacher's Full Name"></div>
+          -->
+        </div>
+        <hr />
+        <h5 class="fw-bold mt-4">Media Consent *</h5>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="optradio" id="mediaA" value="1" required>
+          <label class="form-check-label" for="mediaA">
+            Option A (share with me and the Music for Life community only): I want to receive photographs and videos of my child participating in the Music for Life Program! I do not, however, want the general public including visitors to our website and social media pages, to be able to view photos and videos in which my child appears. For this purpose, I permit Music for Life and its staff and professional videographers, photographers and editors, to photograph and record video of my child while participating in the program and to store, edit and share such photographs and videos of my child with Music for Life staff and parents, including internal training videos that are not published outside of the Music for Life program.
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="optradio" id="mediaB" value="2">
+          <label class="form-check-label" for="mediaB">
+            Option B (do not share photos or videos): I do not wish to receive photographs or videos of my child participating in the Music for Life program. Due to the collective nature of the activities involved in the Music for Life program, your child may inadvertently be photographed or recorded. Music for Life agrees that it will make commercially reasonable efforts to delete any portions of photographs or videos in which your child appears as soon as practicable after being detected, and/or to blur your child’s features (and all recognizable audio eliminated). You agree that any such inadvertent capturing of your child’s image shall not be deemed to be an invasion of privacy and you agree not to make any claim against the Music for Life in connection therewith.
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="optradio" id="mediaC" value="3">
+          <label class="form-check-label" for="mediaC">
+            Option C (share with me and with others): I want to receive photographs and videos of my child participating in the Music for Life program! I also want others, including other parents and visitors to the Music for Life website and social media pages, to be able to view photographs and videos in which my child appears participating in the program. For this purpose, I permit Music for Life, its staff and professional videographers, photographers and editors, to photograph and record video of my child participating in the program and to store, edit, and display such photographs and videos in connection with the Music for Life program, for instance, on the Music for Life website and social media pages, in printed materials such as brochures, in public relations and otherwise for promotional and educational purposes. If you choose this option, you are also consenting to all of the terms of the Music for Life ‘media release’ form, accessible from our terms and conditions, which are viewable at <a href="http://www.musicforlifekids.com/terms-and-conditions/">http://www.musicforlifekids.com/terms-and-conditions</a>.
+          </label>
+        </div>
+        <p class="text-primary small">Photos and videos taken during class and recitals will be a priceless gift for you and your bundle(s) of joy that can be passed on for generations and shared with your family and friends. Please choose an option and visit our <a href="http://musicforlifekids.com/terms-and-conditions/">terms and conditions</a> for complete details. Please be advised the pilot will begin in January of 2016!</p>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="terms_of_service" required>
+          <label class="form-check-label" for="terms_of_service">
+            I agree to the <a href="http://musicforlifekids.com/terms-and-conditions/" target="_blank">Terms and Conditions</a>.
+          </label>
+        </div>
+        <div class="bg-light p-3 rounded mb-3">
+          <h6 class="programLabel mb-2">IN HOME PRIVATE LESSONS! Monthly Recurring Holiday Package</h6>
+          <p class="programDescription mb-1">Music for Life’s Private Lessons are a fun way for your little musician to learn how to play the piano!</p>
+          <p class="programTitle mb-1">Music for Life- Private Piano Lessons</p>
+          <p class="programAgeGroup mb-1">Ages: 3+ years</p>
+          <p class="programDuration mb-1">Duration: 30 Minutes/class</p>
+          <p class="mb-1">Text: 202-738-5433</p>
+          <p class="mb-1">Email: info@musicforlifekids.com</p>
+          <p class="programCostMonth mb-1">Cost per Month: $129.38</p>
+          <p class="programCostHalfYear mb-1">Special Holiday Discount: 25% OFF!</p>
+          <p class="programCostYear mb-1">Normally $45/week now ONLY $33.75/week!</p>
+          <p class="classCost mb-1">test</p>
+          <p class="mb-1">Total Classes: 46 Classes per Year</p>
+          <p class="mb-1">No Scheduled Classes on: Labor Day, 4th of July, Thanksgiving and Black Friday, Last Week in December, New Year’s Day Observed and One Week for Spring Break TBD.</p>
+          <div class="err-mes"></div>
+        </div>
+        <div class="d-flex align-items-center mb-3">
+          <input id="createPayment" class="btn btn-primary submit me-3" type="submit" value="Sign-Up!" />
+          <img class="showLoading" style="width: 35px; display: none;" src="https://musicforlifekids.com/wp-content/uploads/2016/09/loading.gif" alt="Loading..." />
+        </div>
+        <div class="alert alert-info ifYearly" style="display:none;">
+          Your plan is recurring and will be charged. If at the end of the 12 months we have more or less than 46 classes due to teacher sickness, snow days, or school cancellations, or you stop your plan before attending 46 classes, and a balance remains on your account, you will be credited/debited within 30-60 days to the credit card you used to sign up.<br />There are no refunds for missed classes due to student absences. So, be sure to get the most out of the program by making sure your little musician attends each and every week.
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+  </div>
+</div>
+</div>
+<p><script src="https://txtphoneline.com/mfl-wp/scripts/notify.min.js"></script></p>
+<p><script type="text/javascript">var xhr = new XMLHttpRequest();xhr.open('POST', 'https://txtphoneline.com/mfl-wp/class/class.main.php', true);xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');xhr.onload = function () {const selectElement = document.getElementById('state');for(let s of JSON.parse(this.responseText)){var opt = document.createElement('option');opt.value = s.id;opt.innerHTML =s.state;selectElement .appendChild(opt);}};xhr.send('action=fetch-state');</script></p>
+</div>

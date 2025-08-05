@@ -1,0 +1,76 @@
+<p>[insert_php]<br />if(!session_status() == 2) header("Location: https://musicforlifekids.com/administrative-login/");<br />if(empty($_SESSION)) header("Location: https://musicforlifekids.com/administrative-login/");<br />if(!$_SESSION['is_logged_in'])header("Location: https://musicforlifekids.com/administrative-login/");<br />[/insert_php]</p>
+<p><style>
+    .nav-sidebar {<br />
+        width: 100%;<br />
+        padding: 8px 0;<br />
+        border-right: 1px solid #ddd;<br />
+    }<br />
+    .nav-sidebar a {<br />
+        color: #333;<br />
+        -webkit-transition: all 0.08s linear;<br />
+        -moz-transition: all 0.08s linear;<br />
+        -o-transition: all 0.08s linear;<br />
+        transition: all 0.08s linear;<br />
+        -webkit-border-radius: 4px 0 0 4px;<br />
+        -moz-border-radius: 4px 0 0 4px;<br />
+        border-radius: 4px 0 0 4px;<br />
+    }<br />
+    .nav-sidebar .active a {<br />
+        cursor: default;<br />
+        background-color: #428bca;<br />
+        color: #fff;<br />
+        text-shadow: 1px 1px 1px #666;<br />
+    }<br />
+    .nav-sidebar .active a:hover {<br />
+        background-color: #428bca;<br />
+    }<br />
+    .nav-sidebar .text-overflow a,<br />
+    .nav-sidebar .text-overflow .media-body {<br />
+        white-space: nowrap;<br />
+        overflow: hidden;<br />
+        -o-text-overflow: ellipsis;<br />
+        text-overflow: ellipsis;<br />
+    }</p>
+<p>    /* Right-aligned sidebar */<br />
+    .nav-sidebar.pull-right {<br />
+        border-right: 0;<br />
+        border-left: 1px solid #ddd;<br />
+    }<br />
+    .nav-sidebar.pull-right a {<br />
+        -webkit-border-radius: 0 4px 4px 0;<br />
+        -moz-border-radius: 0 4px 4px 0;<br />
+        border-radius: 0 4px 4px 0;<br />
+    }<br />
+</style></p>
+<div class="container">
+<h3>Hello Admin!</h3>
+<div class="row">
+<div class="col-sm-6"><nav class="nav-sidebar">
+<ul class="nav">
+<li id="home" class="active"><a href="#">Home</a></li>
+<li><a id="programSubscription" href="https://musicforlifekids.com/program-subscription/">Program Subscription</a></li>
+<li><a id="registeredStudent" href="https://musicforlifekids.com/registered-student/">School Program classes</a></li>
+<li><a id="tcherModule" href="https://musicforlifekids.com/teachers-module/">Teacher's Module</a></li>
+<li><a id="studentList" href="https://musicforlifekids.com/registered-student-list/">Registered Student List</a></li>
+<li><a id="" href="https://musicforlifekids.com/change-credit-card-admin/">Send Link to Change Parent Credit Card</a></li>
+<li><a id="chesterBrookStudentList" href="https://musicforlifekids.com/chesterbrook-student-list/">Chesterbrook Student List</a></li>
+<li><a id="retiredStudentList" href="https://musicforlifekids.com/retired-students/">Retired Student List</a></li>
+<li><a id="chesterbrookRetiredStudentList" href="https://musicforlifekids.com/inactive-chesterbrook-plans/">Chesterbrook Inactive Student List</a></li>
+<li><a id="unSubscribeStudent" href="https://musicforlifekids.com/unsubscribe-student/">Un-Subscribe Student</a></li>
+<li><a id="reSubscribeStudent" href="https://musicforlifekids.com/re-subscribe-student/">Re-Subscribe Student</a></li>
+<li><a id="programRefund" href="https://musicforlifekids.com/refund/">Billing info / Refund Charges</a></li>
+<li><a id="failedPayments" href="https://musicforlifekids.com/failed-payments/">Failed Payments</a></li>
+<li><a id="importRecital" href="https://musicforlifekids.com/import-recital/">Import Recital</a></li>
+<li class="nav-divider"> </li>
+<li><a id="importSchools" href="https://musicforlifekids.com/school-import/">Import Schools</a></li>
+<li class="nav-divider"> </li>
+<li class="nav-divider"> </li>
+<li><a id="trial" href="https://musicforlifekids.com/adjust-subscription-payment/">Adjust Subscription</a></li>
+<li class="nav-divider"> </li>
+</ul>
+</nav></div>
+<div class="col-md-5">
+<div class="form-group"><label for="desc">Description:</label><br /><textarea id="desc" class="form-control" readonly="readonly" rows="5"></textarea></div>
+</div>
+</div>
+</div>
